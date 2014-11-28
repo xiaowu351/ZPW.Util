@@ -42,6 +42,9 @@ namespace ZPW.Util
 		/// 转换为可空整型
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToIntOrNull(转换为可空整型)" lang="cs" title="转换为可空整型"/>
+		/// </remarks>
 		public static int? ToIntOrNull(object data)
 		{
 			if (data == null)
@@ -57,6 +60,9 @@ namespace ZPW.Util
 		/// 转换为双精度浮点数
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDouble(转换为双精度浮点数)" lang="cs" title="转换为双精度浮点数"/>
+		/// </remarks>
 		public static double ToDouble(object data)
 		{
 			if (data == null)
@@ -70,6 +76,9 @@ namespace ZPW.Util
 		/// </summary>
 		/// <param name="data">数据</param>
 		/// <param name="digits">小数位数</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDouble(转换为双精度浮点数)" lang="cs" title="转换为双精度浮点数"/>
+		/// </remarks>
 		public static double ToDouble(object data, int digits)
 		{
 			return Math.Round(ToDouble(data), digits);
@@ -79,6 +88,9 @@ namespace ZPW.Util
 		/// 转换为可空双精度浮点数
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDoubleOrNull(转换为可空双精度浮点数)" lang="cs" title="转换为可空双精度浮点数"/>
+		/// </remarks>
 		public static double? ToDoubleOrNull(object data)
 		{
 			if (data == null)
@@ -94,6 +106,9 @@ namespace ZPW.Util
 		/// 转换为高精度浮点数
 		/// </summary>
 		/// <param name="data">数据</param>
+		///  <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDecimal(转换为高精度浮点数)" lang="cs" title="转换为高精度浮点数"/>
+		/// </remarks>
 		public static decimal ToDecimal(object data)
 		{
 			if (data == null)
@@ -107,6 +122,9 @@ namespace ZPW.Util
 		/// </summary>
 		/// <param name="data">数据</param>
 		/// <param name="digits">小数位数</param>
+		///  <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDecimal(转换为高精度浮点数)" lang="cs" title="转换为高精度浮点数"/>
+		/// </remarks>
 		public static decimal ToDecimal(object data, int digits)
 		{
 			return Math.Round(ToDecimal(data), digits);
@@ -116,6 +134,9 @@ namespace ZPW.Util
 		/// 转换为可空高精度浮点数
 		/// </summary>
 		/// <param name="data">数据</param>
+		///  <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDecimalOrNull(转换为可空高精度浮点数)" lang="cs" title="转换为可空高精度浮点数"/>
+		/// </remarks>
 		public static decimal? ToDecimalOrNull(object data)
 		{
 			if (data == null)
@@ -132,6 +153,9 @@ namespace ZPW.Util
 		/// </summary>
 		/// <param name="data">数据</param>
 		/// <param name="digits">小数位数</param>
+		///  <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDecimalOrNull(转换为可空高精度浮点数)" lang="cs" title="转换为可空高精度浮点数"/>
+		/// </remarks>
 		public static decimal? ToDecimalOrNull(object data, int digits)
 		{
 			var result = ToDecimalOrNull(data);
@@ -148,6 +172,9 @@ namespace ZPW.Util
 		/// 转换为Guid
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToGuid(转换为Guid)" lang="cs" title="转换为Guid"/>
+		/// </remarks>
 		public static Guid ToGuid(object data)
 		{
 			if (data == null)
@@ -160,6 +187,9 @@ namespace ZPW.Util
 		/// 转换为可空Guid
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToGuidOrNull(转换为可空Guid)" lang="cs" title="转换为可空Guid"/>
+		/// </remarks>
 		public static Guid? ToGuidOrNull(object data)
 		{
 			if (data == null)
@@ -175,6 +205,9 @@ namespace ZPW.Util
 		/// 转换为Guid集合
 		/// </summary>
 		/// <param name="guid">guid集合字符串，范例:83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToGuidList(转换为Guid集合)" lang="cs" title="转换为Guid集合"/>
+		/// </remarks>
 		public static List<Guid> ToGuidList(string guid)
 		{
 			var listGuid = new List<Guid>();
@@ -197,6 +230,9 @@ namespace ZPW.Util
 		/// 转换为日期
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDate(转换为日期)" lang="cs" title="转换为日期"/>
+		/// </remarks>
 		public static DateTime ToDate(object data)
 		{
 			if (data == null)
@@ -209,6 +245,9 @@ namespace ZPW.Util
 		/// 转换为可空日期
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToDateOrNull(转换为可空日期)" lang="cs" title="转换为可空日期"/>
+		/// </remarks>
 		public static DateTime? ToDateOrNull(object data)
 		{
 			if (data == null)
@@ -228,6 +267,9 @@ namespace ZPW.Util
 		/// 转换为布尔值
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToBool(转换为布尔值)" lang="cs" title="转换为布尔值"/>
+		/// </remarks>
 		public static bool ToBool(object data)
 		{
 			if (data == null)
@@ -267,6 +309,9 @@ namespace ZPW.Util
 		/// 转换为可空布尔值
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToBoolOrNull(转换为可空布尔值)" lang="cs" title="转换为可空布尔值"/>
+		/// </remarks>
 		public static bool? ToBoolOrNull(object data)
 		{
 			if (data == null)
@@ -289,6 +334,9 @@ namespace ZPW.Util
 		/// 转换为字符串
 		/// </summary>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="ToString(转换为字符串)" lang="cs" title="转换为字符串"/>
+		/// </remarks>
 		public static string ToString(object data)
 		{
 			return data == null ? string.Empty : data.ToString().Trim();
@@ -303,6 +351,9 @@ namespace ZPW.Util
 		/// </summary>
 		/// <typeparam name="TResult">目标类型</typeparam>
 		/// <param name="data">数据</param>
+		/// <remarks>示例如下：
+		///  <code source="..\ZPW.Util.Test\ConvertHelperTest.cs" region="To(通用泛型转换)" lang="cs" title="泛型转换"/>
+		/// </remarks>
 		public static TResult To<TResult>(object data)
 		{
 			if (data == null || string.IsNullOrWhiteSpace(data.ToString()))
