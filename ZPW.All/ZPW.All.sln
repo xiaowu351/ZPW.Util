@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util", "ZPW.Util\ZPW.Util.csproj", "{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util.Test", "ZPW.Util.Test\ZPW.Util.Test.csproj", "{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
