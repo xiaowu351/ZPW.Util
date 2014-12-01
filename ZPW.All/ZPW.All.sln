@@ -1,9 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util", "ZPW.Util\ZPW.Util.csproj", "{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Core", "01-Core", "{90DD7C78-E310-4D97-9E02-F12570FADF0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util.Test", "ZPW.Util.Test\ZPW.Util.Test.csproj", "{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-ValidationEnterprise", "02-ValidationEnterprise", "{DE72CAEB-7F31-44BB-9E2C-FD26B70F7D5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-Dependency", "00-Dependency", "{B5E29D4E-7505-44C5-B6C8-0CC9EFAFD705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyLibraries", "SourceCode\DependencyLibraries\DependencyLibraries.csproj", "{2C0F14B1-6F79-4B50-B7FF-C98929A0C114}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util", "SourceCode\ZPW.Util\ZPW.Util.csproj", "{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util.Test", "TestResults\ZPW.Util.Test\ZPW.Util.Test.csproj", "{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util.Validations.Enterprise", "SourceCode\ZPW.Util.Validations.Enterprise\ZPW.Util.Validations.Enterprise.csproj", "{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZPW.Util.Validations.Enterprise.Test", "TestResults\ZPW.Util.Validations.Enterprise.Test\ZPW.Util.Validations.Enterprise.Test.csproj", "{EF50E73D-8DF6-4CA1-B221-3BBB1395A639}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,6 +23,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C0F14B1-6F79-4B50-B7FF-C98929A0C114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C0F14B1-6F79-4B50-B7FF-C98929A0C114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C0F14B1-6F79-4B50-B7FF-C98929A0C114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C0F14B1-6F79-4B50-B7FF-C98929A0C114}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -19,8 +35,23 @@ Global
 		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF50E73D-8DF6-4CA1-B221-3BBB1395A639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF50E73D-8DF6-4CA1-B221-3BBB1395A639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF50E73D-8DF6-4CA1-B221-3BBB1395A639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF50E73D-8DF6-4CA1-B221-3BBB1395A639}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B75B744-EFF0-4407-8D47-F7A4D8E0D12C} = {90DD7C78-E310-4D97-9E02-F12570FADF0B}
+		{14DEAEDA-9BD6-4B5B-BAD0-04B0BF02233C} = {90DD7C78-E310-4D97-9E02-F12570FADF0B}
+		{20CBE33D-F0B5-4D0E-B22D-4BD12037EEA8} = {DE72CAEB-7F31-44BB-9E2C-FD26B70F7D5D}
+		{EF50E73D-8DF6-4CA1-B221-3BBB1395A639} = {DE72CAEB-7F31-44BB-9E2C-FD26B70F7D5D}
+		{2C0F14B1-6F79-4B50-B7FF-C98929A0C114} = {B5E29D4E-7505-44C5-B6C8-0CC9EFAFD705}
 	EndGlobalSection
 EndGlobal
