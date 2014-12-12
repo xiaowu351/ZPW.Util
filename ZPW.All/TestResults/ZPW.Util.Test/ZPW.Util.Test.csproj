@@ -58,8 +58,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ConvertHelperTest.cs" />
+    <Compile Include="Core\ConvertHelperTest.cs" />
+    <Compile Include="Core\ExceptionHelperTest.cs" />
+    <Compile Include="Core\IOHelperTest.cs" />
+    <Compile Include="Core\UriHelperTest.cs" />
+    <Compile Include="Core\UuidHelperTest.cs" />
+    <Compile Include="Exceptions\WarningExceptionTest.cs" />
     <Compile Include="Extensions\ConvertExtensionTest.cs" />
+    <Compile Include="Extensions\StringHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validations\Samples\Employee.cs" />
     <Compile Include="Validations\ValidationTest.cs" />
@@ -71,7 +77,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ZPW.Util.Test.testrunconfig">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ZPW.Util.Test.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\TestData\out.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

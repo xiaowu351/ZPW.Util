@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ZPW.Util.Core;
 
 namespace ZPW.Util.Test
 {
@@ -18,7 +19,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToInt_Null()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToInt(null));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToInt(null));
 		}
 
 		/// <summary>
@@ -27,7 +28,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToInt_Empty()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToInt(""));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToInt(""));
 		}
 
 		/// <summary>
@@ -36,7 +37,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToInt_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToInt("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToInt("1A"));
 		}
 
 		/// <summary>
@@ -45,8 +46,8 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToInt()
 		{
-			Assert.AreEqual(1, ConvertHelper.ToInt("1"));
-			Assert.AreEqual(1778020, ConvertHelper.ToInt("1778019.7801684"));
+			Assert.AreEqual(1, CoreHelper.ConvertHelper.ToInt("1"));
+			Assert.AreEqual(1778020, CoreHelper.ConvertHelper.ToInt("1778019.7801684"));
 		}
 
 		#endregion
@@ -59,7 +60,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToIntOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToIntOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToIntOrNull(null));
 		}
 
 		/// <summary>
@@ -68,7 +69,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToIntOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToIntOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToIntOrNull(""));
 		}
 
 		/// <summary>
@@ -77,7 +78,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToIntOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToIntOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToIntOrNull("1A"));
 		}
 
 		/// <summary>
@@ -86,7 +87,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToIntOrNull_0()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToIntOrNull("0"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToIntOrNull("0"));
 		}
 
 		/// <summary>
@@ -95,7 +96,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToIntOrNull()
 		{
-			Assert.AreEqual(1, ConvertHelper.ToIntOrNull("1"));
+			Assert.AreEqual(1, CoreHelper.ConvertHelper.ToIntOrNull("1"));
 		}
 
 		#endregion
@@ -108,7 +109,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDouble_Null()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDouble(null));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDouble(null));
 		}
 
 		/// <summary>
@@ -117,7 +118,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDouble_Empty()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDouble(""));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDouble(""));
 		}
 
 		/// <summary>
@@ -126,7 +127,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDouble_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDouble("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDouble("1A"));
 		}
 
 		/// <summary>
@@ -135,16 +136,16 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDouble()
 		{
-			Assert.AreEqual(1.2, ConvertHelper.ToDouble("1.2"));
+			Assert.AreEqual(1.2, CoreHelper.ConvertHelper.ToDouble("1.2"));
 		}
 
 		/// <summary>
 		/// 转换为双精度浮点数,指定2位小数位数
 		///</summary>
-		[TestMethod()]
+		[TestMethod]
 		public void TestToDouble_DigitsIs2()
 		{
-			Assert.AreEqual(12.36, ConvertHelper.ToDouble("12.355", 2));
+			Assert.AreEqual(12.36, CoreHelper.ConvertHelper.ToDouble("12.355", 2));
 		}
 
 		#endregion
@@ -157,7 +158,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDoubleOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToDoubleOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDoubleOrNull(null));
 		}
 
 		/// <summary>
@@ -166,7 +167,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDoubleOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToDoubleOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDoubleOrNull(""));
 		}
 
 		/// <summary>
@@ -175,7 +176,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDoubleOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToDoubleOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDoubleOrNull("1A"));
 		}
 
 		/// <summary>
@@ -184,7 +185,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDoubleOrNull_0()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDoubleOrNull("0"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDoubleOrNull("0"));
 		}
 
 		/// <summary>
@@ -193,7 +194,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDoubleOrNull()
 		{
-			Assert.AreEqual(1.2, ConvertHelper.ToDoubleOrNull("1.2"));
+			Assert.AreEqual(1.2, CoreHelper.ConvertHelper.ToDoubleOrNull("1.2"));
 		}
 
 		#endregion
@@ -206,7 +207,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimal_Null()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDecimal(null));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDecimal(null));
 		}
 
 		/// <summary>
@@ -215,7 +216,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimal_Empty()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDecimal(""));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDecimal(""));
 		}
 
 		/// <summary>
@@ -224,7 +225,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimal_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDecimal("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDecimal("1A"));
 		}
 
 		/// <summary>
@@ -233,16 +234,16 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimal()
 		{
-			Assert.AreEqual(1.2M, ConvertHelper.ToDecimal("1.2"));
+			Assert.AreEqual(1.2M, CoreHelper.ConvertHelper.ToDecimal("1.2"));
 		}
 
 		/// <summary>
 		/// 转换为高精度浮点数,指定2位小数位数
 		///</summary>
-		[TestMethod()]
+		[TestMethod]
 		public void TestToDecimal_DigitsIs2()
 		{
-			Assert.AreEqual(12.24M, ConvertHelper.ToDecimal("12.235", 2));
+			Assert.AreEqual(12.24M, CoreHelper.ConvertHelper.ToDecimal("12.235", 2));
 		}
 
 		#endregion
@@ -255,7 +256,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToDecimalOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDecimalOrNull(null));
 		}
 
 		/// <summary>
@@ -264,7 +265,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToDecimalOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDecimalOrNull(""));
 		}
 
 		/// <summary>
@@ -273,7 +274,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToDecimalOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDecimalOrNull("1A"));
 		}
 
 		/// <summary>
@@ -282,7 +283,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull_Invalid_DigitsIs2()
 		{
-			Assert.IsNull(ConvertHelper.ToDecimalOrNull("1A", 2));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDecimalOrNull("1A", 2));
 		}
 
 		/// <summary>
@@ -291,7 +292,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull_0()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToDecimalOrNull("0"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToDecimalOrNull("0"));
 		}
 
 		/// <summary>
@@ -300,16 +301,16 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDecimalOrNull()
 		{
-			Assert.AreEqual(1.2M, ConvertHelper.ToDecimalOrNull("1.2"));
+			Assert.AreEqual(1.2M, CoreHelper.ConvertHelper.ToDecimalOrNull("1.2"));
 		}
 
 		/// <summary>
 		/// 转换为可空高精度浮点数,指定2位小数位数
 		///</summary>
-		[TestMethod()]
+		[TestMethod]
 		public void ToDecimalOrNull_DigitsIs2()
 		{
-			Assert.AreEqual(12.24M, ConvertHelper.ToDecimalOrNull("12.235", 2));
+			Assert.AreEqual(12.24M, CoreHelper.ConvertHelper.ToDecimalOrNull("12.235", 2));
 		}
 
 		#endregion
@@ -322,7 +323,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuid_Null()
 		{
-			Assert.AreEqual(Guid.Empty, ConvertHelper.ToGuid(null));
+			Assert.AreEqual(Guid.Empty, CoreHelper.ConvertHelper.ToGuid(null));
 		}
 
 		/// <summary>
@@ -331,7 +332,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuid_Empty()
 		{
-			Assert.AreEqual(Guid.Empty, ConvertHelper.ToGuid(""));
+			Assert.AreEqual(Guid.Empty, CoreHelper.ConvertHelper.ToGuid(""));
 		}
 
 		/// <summary>
@@ -340,7 +341,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuid_Invalid()
 		{
-			Assert.AreEqual(Guid.Empty, ConvertHelper.ToGuid("1A"));
+			Assert.AreEqual(Guid.Empty, CoreHelper.ConvertHelper.ToGuid("1A"));
 		}
 
 		/// <summary>
@@ -349,7 +350,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuid()
 		{
-			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"), ConvertHelper.ToGuid("B9EB56E9-B720-40B4-9425-00483D311DDC"));
+			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"), CoreHelper.ConvertHelper.ToGuid("B9EB56E9-B720-40B4-9425-00483D311DDC"));
 		}
 
 		#endregion
@@ -362,7 +363,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToGuidOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToGuidOrNull(null));
 		}
 
 		/// <summary>
@@ -371,7 +372,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToGuidOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToGuidOrNull(""));
 		}
 
 		/// <summary>
@@ -380,7 +381,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToGuidOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToGuidOrNull("1A"));
 		}
 
 		/// <summary>
@@ -389,7 +390,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidOrNull()
 		{
-			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"), ConvertHelper.ToGuidOrNull("B9EB56E9-B720-40B4-9425-00483D311DDC"));
+			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"), CoreHelper.ConvertHelper.ToGuidOrNull("B9EB56E9-B720-40B4-9425-00483D311DDC"));
 		}
 
 		#endregion
@@ -402,7 +403,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidList_Empty()
 		{
-			Assert.AreEqual(0, ConvertHelper.ToGuidList("").Count);
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.ToGuidList("").Count);
 		}
 
 		/// <summary>
@@ -411,7 +412,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToGuidList_LastIsComma()
 		{
-			Assert.AreEqual(1, ConvertHelper.ToGuidList("83B0233C-A24F-49FD-8083-1337209EBC9A,").Count);
+			Assert.AreEqual(1, CoreHelper.ConvertHelper.ToGuidList("83B0233C-A24F-49FD-8083-1337209EBC9A,").Count);
 		}
 
 		/// <summary>
@@ -421,9 +422,9 @@ namespace ZPW.Util.Test
 		public void TestToGuidList_MiddleIsComma()
 		{
 			const string guid = "83B0233C-A24F-49FD-8083-1337209EBC9A,,EAB523C6-2FE7-47BE-89D5-C6D440C3033A,";
-			Assert.AreEqual(2, ConvertHelper.ToGuidList(guid).Count);
-			Assert.AreEqual(new Guid("83B0233C-A24F-49FD-8083-1337209EBC9A"), ConvertHelper.ToGuidList(guid)[0]);
-			Assert.AreEqual(new Guid("EAB523C6-2FE7-47BE-89D5-C6D440C3033A"), ConvertHelper.ToGuidList(guid)[1]);
+			Assert.AreEqual(2, CoreHelper.ConvertHelper.ToGuidList(guid).Count);
+			Assert.AreEqual(new Guid("83B0233C-A24F-49FD-8083-1337209EBC9A"), CoreHelper.ConvertHelper.ToGuidList(guid)[0]);
+			Assert.AreEqual(new Guid("EAB523C6-2FE7-47BE-89D5-C6D440C3033A"), CoreHelper.ConvertHelper.ToGuidList(guid)[1]);
 		}
 
 		/// <summary>
@@ -433,8 +434,8 @@ namespace ZPW.Util.Test
 		public void TestToGuidList_1Guid()
 		{
 			const string guid = "83B0233C-A24F-49FD-8083-1337209EBC9A";
-			Assert.AreEqual(1, ConvertHelper.ToGuidList(guid).Count);
-			Assert.AreEqual(new Guid(guid), ConvertHelper.ToGuidList(guid)[0]);
+			Assert.AreEqual(1, CoreHelper.ConvertHelper.ToGuidList(guid).Count);
+			Assert.AreEqual(new Guid(guid), CoreHelper.ConvertHelper.ToGuidList(guid)[0]);
 		}
 
 		/// <summary>
@@ -444,9 +445,9 @@ namespace ZPW.Util.Test
 		public void TestToGuidList_2Guid()
 		{
 			const string guid = "83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A";
-			Assert.AreEqual(2, ConvertHelper.ToGuidList(guid).Count);
-			Assert.AreEqual(new Guid("83B0233C-A24F-49FD-8083-1337209EBC9A"), ConvertHelper.ToGuidList(guid)[0]);
-			Assert.AreEqual(new Guid("EAB523C6-2FE7-47BE-89D5-C6D440C3033A"), ConvertHelper.ToGuidList(guid)[1]);
+			Assert.AreEqual(2, CoreHelper.ConvertHelper.ToGuidList(guid).Count);
+			Assert.AreEqual(new Guid("83B0233C-A24F-49FD-8083-1337209EBC9A"), CoreHelper.ConvertHelper.ToGuidList(guid)[0]);
+			Assert.AreEqual(new Guid("EAB523C6-2FE7-47BE-89D5-C6D440C3033A"), CoreHelper.ConvertHelper.ToGuidList(guid)[1]);
 		}
 
 		#endregion
@@ -459,7 +460,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDate_Null()
 		{
-			Assert.AreEqual(DateTime.MinValue, ConvertHelper.ToDate(null));
+			Assert.AreEqual(DateTime.MinValue, CoreHelper.ConvertHelper.ToDate(null));
 		}
 
 		/// <summary>
@@ -468,7 +469,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDate_Empty()
 		{
-			Assert.AreEqual(DateTime.MinValue, ConvertHelper.ToDate(""));
+			Assert.AreEqual(DateTime.MinValue, CoreHelper.ConvertHelper.ToDate(""));
 		}
 
 		/// <summary>
@@ -477,7 +478,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDate_Invalid()
 		{
-			Assert.AreEqual(DateTime.MinValue, ConvertHelper.ToDate("1A"));
+			Assert.AreEqual(DateTime.MinValue, CoreHelper.ConvertHelper.ToDate("1A"));
 		}
 
 		/// <summary>
@@ -486,7 +487,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDate()
 		{
-			Assert.AreEqual(new DateTime(2000, 1, 1), ConvertHelper.ToDate("2000-1-1"));
+			Assert.AreEqual(new DateTime(2000, 1, 1), CoreHelper.ConvertHelper.ToDate("2000-1-1"));
 		}
 
 		#endregion
@@ -499,7 +500,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDateOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToDateOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDateOrNull(null));
 		}
 
 		/// <summary>
@@ -508,7 +509,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDateOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToDateOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDateOrNull(""));
 		}
 
 		/// <summary>
@@ -517,7 +518,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDateOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToDateOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToDateOrNull("1A"));
 		}
 
 		/// <summary>
@@ -526,7 +527,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToDateOrNull()
 		{
-			Assert.AreEqual(new DateTime(2000, 1, 1), ConvertHelper.ToDateOrNull("2000-1-1"));
+			Assert.AreEqual(new DateTime(2000, 1, 1), CoreHelper.ConvertHelper.ToDateOrNull("2000-1-1"));
 		}
 
 		#endregion
@@ -539,7 +540,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBool_Null()
 		{
-			Assert.AreEqual(false, ConvertHelper.ToBool(null));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool(null));
 		}
 
 		/// <summary>
@@ -548,7 +549,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBool_Empty()
 		{
-			Assert.AreEqual(false, ConvertHelper.ToBool(""));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool(""));
 		}
 
 		/// <summary>
@@ -557,7 +558,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBool_Invalid()
 		{
-			Assert.AreEqual(false, ConvertHelper.ToBool("1A"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("1A"));
 		}
 
 		/// <summary>
@@ -566,12 +567,12 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBool_False()
 		{
-			Assert.AreEqual(false, ConvertHelper.ToBool("0"));
-			Assert.AreEqual(false, ConvertHelper.ToBool("否"));
-			Assert.AreEqual(false, ConvertHelper.ToBool("no"));
-			Assert.AreEqual(false, ConvertHelper.ToBool("No"));
-			Assert.AreEqual(false, ConvertHelper.ToBool("false"));
-			Assert.AreEqual(false, ConvertHelper.ToBool("False"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("0"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("否"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("no"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("No"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("false"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBool("False"));
 		}
 
 		/// <summary>
@@ -580,12 +581,12 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBool_True()
 		{
-			Assert.AreEqual(true, ConvertHelper.ToBool("1"));
-			Assert.AreEqual(true, ConvertHelper.ToBool("是"));
-			Assert.AreEqual(true, ConvertHelper.ToBool("yes"));
-			Assert.AreEqual(true, ConvertHelper.ToBool("Yes"));
-			Assert.AreEqual(true, ConvertHelper.ToBool("true"));
-			Assert.AreEqual(true, ConvertHelper.ToBool("True"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("1"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("是"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("yes"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("Yes"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("true"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBool("True"));
 		}
 
 		#endregion
@@ -598,7 +599,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBoolOrNull_Null()
 		{
-			Assert.IsNull(ConvertHelper.ToBoolOrNull(null));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToBoolOrNull(null));
 		}
 
 		/// <summary>
@@ -607,7 +608,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBoolOrNull_Empty()
 		{
-			Assert.IsNull(ConvertHelper.ToBoolOrNull(""));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToBoolOrNull(""));
 		}
 
 		/// <summary>
@@ -616,7 +617,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBoolOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.ToBoolOrNull("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.ToBoolOrNull("1A"));
 		}
 
 		/// <summary>
@@ -625,12 +626,12 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBoolOrNull_False()
 		{
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("0"));
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("否"));
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("no"));
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("No"));
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("false"));
-			Assert.AreEqual(false, ConvertHelper.ToBoolOrNull("False"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("0"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("否"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("no"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("No"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("false"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.ToBoolOrNull("False"));
 		}
 
 		/// <summary>
@@ -639,12 +640,12 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToBoolOrNull_True()
 		{
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("1"));
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("是"));
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("yes"));
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("Yes"));
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("true"));
-			Assert.AreEqual(true, ConvertHelper.ToBoolOrNull("True"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("1"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("是"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("yes"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("Yes"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("true"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.ToBoolOrNull("True"));
 		}
 
 		#endregion
@@ -657,7 +658,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToString_Null()
 		{
-			Assert.AreEqual(string.Empty, ConvertHelper.ToString(null));
+			Assert.AreEqual(string.Empty, CoreHelper.ConvertHelper.ToString(null));
 		}
 
 		/// <summary>
@@ -666,7 +667,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToString_Empty()
 		{
-			Assert.AreEqual(string.Empty, ConvertHelper.ToString(" "));
+			Assert.AreEqual(string.Empty, CoreHelper.ConvertHelper.ToString(" "));
 		}
 
 		/// <summary>
@@ -675,7 +676,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestToString()
 		{
-			Assert.AreEqual("1", ConvertHelper.ToString(1));
+			Assert.AreEqual("1", CoreHelper.ConvertHelper.ToString(1));
 		}
 
 		#endregion
@@ -690,7 +691,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Int_Null()
 		{
-			Assert.AreEqual(0, ConvertHelper.To<int>(null));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.To<int>(null));
 		}
 
 		/// <summary>
@@ -699,7 +700,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Int_Empty()
 		{
-			Assert.AreEqual(0, ConvertHelper.To<int>(""));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.To<int>(""));
 		}
 
 		/// <summary>
@@ -708,7 +709,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Int_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.To<int>("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.To<int>("1A"));
 		}
 
 		/// <summary>
@@ -717,7 +718,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Int()
 		{
-			Assert.AreEqual(1, ConvertHelper.To<int>("1"));
+			Assert.AreEqual(1, CoreHelper.ConvertHelper.To<int>("1"));
 		}
 
 		/// <summary>
@@ -726,7 +727,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_IntOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<int?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<int?>("1A"));
 		}
 
 		/// <summary>
@@ -736,7 +737,7 @@ namespace ZPW.Util.Test
 		public void TestTo_IntOrNull()
 		{
 			int? source = 1;
-			Assert.AreEqual(source, ConvertHelper.To<int?>("1"));
+			Assert.AreEqual(source, CoreHelper.ConvertHelper.To<int?>("1"));
 		}
 
 		#endregion
@@ -749,7 +750,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Guid_Invalid()
 		{
-			Assert.AreEqual(Guid.Empty, ConvertHelper.To<Guid>("1A"));
+			Assert.AreEqual(Guid.Empty, CoreHelper.ConvertHelper.To<Guid>("1A"));
 		}
 
 		/// <summary>
@@ -759,7 +760,7 @@ namespace ZPW.Util.Test
 		public void TestTo_Guid()
 		{
 			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"),
-				ConvertHelper.To<Guid>("B9EB56E9-B720-40B4-9425-00483D311DDC"));
+				CoreHelper.ConvertHelper.To<Guid>("B9EB56E9-B720-40B4-9425-00483D311DDC"));
 		}
 
 		/// <summary>
@@ -768,7 +769,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_GuidOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<Guid?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<Guid?>("1A"));
 		}
 
 		/// <summary>
@@ -778,7 +779,7 @@ namespace ZPW.Util.Test
 		public void TestTo_GuidOrNull()
 		{
 			Assert.AreEqual(new Guid("B9EB56E9-B720-40B4-9425-00483D311DDC"),
-				ConvertHelper.To<Guid?>("B9EB56E9-B720-40B4-9425-00483D311DDC"));
+				CoreHelper.ConvertHelper.To<Guid?>("B9EB56E9-B720-40B4-9425-00483D311DDC"));
 		}
 
 		#endregion
@@ -791,7 +792,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_String()
 		{
-			Assert.AreEqual("123", ConvertHelper.To<string>(123));
+			Assert.AreEqual("123", CoreHelper.ConvertHelper.To<string>(123));
 		}
 
 		#endregion
@@ -804,7 +805,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Double_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.To<double>("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.To<double>("1A"));
 		}
 
 		/// <summary>
@@ -813,7 +814,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Double()
 		{
-			Assert.AreEqual(12.5, ConvertHelper.To<double>("12.5"));
+			Assert.AreEqual(12.5, CoreHelper.ConvertHelper.To<double>("12.5"));
 		}
 
 		/// <summary>
@@ -822,7 +823,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DoubleOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<double?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<double?>("1A"));
 		}
 
 		/// <summary>
@@ -831,7 +832,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DoubleOrNull()
 		{
-			Assert.AreEqual(12.5, ConvertHelper.To<double?>("12.5"));
+			Assert.AreEqual(12.5, CoreHelper.ConvertHelper.To<double?>("12.5"));
 		}
 
 		#endregion
@@ -844,7 +845,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Decimal_Invalid()
 		{
-			Assert.AreEqual(0, ConvertHelper.To<decimal>("1A"));
+			Assert.AreEqual(0, CoreHelper.ConvertHelper.To<decimal>("1A"));
 		}
 
 		/// <summary>
@@ -853,7 +854,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Decimal()
 		{
-			Assert.AreEqual(12.5M, ConvertHelper.To<decimal>("12.5"));
+			Assert.AreEqual(12.5M, CoreHelper.ConvertHelper.To<decimal>("12.5"));
 		}
 
 		/// <summary>
@@ -862,7 +863,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DecimalOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<decimal?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<decimal?>("1A"));
 		}
 
 		/// <summary>
@@ -871,7 +872,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DecimalOrNull()
 		{
-			Assert.AreEqual(12.5M, ConvertHelper.To<decimal?>("12.5"));
+			Assert.AreEqual(12.5M, CoreHelper.ConvertHelper.To<decimal?>("12.5"));
 		}
 
 		#endregion
@@ -884,7 +885,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Bool_Invalid()
 		{
-			Assert.AreEqual(false, ConvertHelper.To<bool>("1A"));
+			Assert.AreEqual(false, CoreHelper.ConvertHelper.To<bool>("1A"));
 		}
 
 		/// <summary>
@@ -893,7 +894,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_Bool()
 		{
-			Assert.AreEqual(true, ConvertHelper.To<bool>(1));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.To<bool>(1));
 		}
 
 		/// <summary>
@@ -902,7 +903,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_BoolOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<bool?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<bool?>("1A"));
 		}
 
 		/// <summary>
@@ -911,7 +912,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_BoolOrNull()
 		{
-			Assert.AreEqual(true, ConvertHelper.To<bool?>("true"));
+			Assert.AreEqual(true, CoreHelper.ConvertHelper.To<bool?>("true"));
 		}
 
 		#endregion
@@ -924,7 +925,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DateTime_Invalid()
 		{
-			Assert.AreEqual(DateTime.MinValue, ConvertHelper.To<DateTime>("1A"));
+			Assert.AreEqual(DateTime.MinValue, CoreHelper.ConvertHelper.To<DateTime>("1A"));
 		}
 
 		/// <summary>
@@ -933,7 +934,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DateTime()
 		{
-			Assert.AreEqual(new DateTime(2000, 1, 1), ConvertHelper.To<DateTime>("2000-1-1"));
+			Assert.AreEqual(new DateTime(2000, 1, 1), CoreHelper.ConvertHelper.To<DateTime>("2000-1-1"));
 		}
 
 		/// <summary>
@@ -942,7 +943,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DateTimeOrNull_Invalid()
 		{
-			Assert.IsNull(ConvertHelper.To<DateTime?>("1A"));
+			Assert.IsNull(CoreHelper.ConvertHelper.To<DateTime?>("1A"));
 		}
 
 		/// <summary>
@@ -951,7 +952,7 @@ namespace ZPW.Util.Test
 		[TestMethod]
 		public void TestTo_DateTimeOrNull()
 		{
-			Assert.AreEqual(new DateTime(2000, 1, 1), ConvertHelper.To<DateTime?>("2000-1-1"));
+			Assert.AreEqual(new DateTime(2000, 1, 1), CoreHelper.ConvertHelper.To<DateTime?>("2000-1-1"));
 		}
 
 		#endregion

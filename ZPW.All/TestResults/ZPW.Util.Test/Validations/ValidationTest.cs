@@ -1,7 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ZPW.Util.Validations;
+using ZPW.Util.Validations.Impl;
 
 namespace ZPW.Util.Test.Validations
 {

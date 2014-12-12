@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace ZPW.Util.Validations
+namespace ZPW.Util.Validations.Impl
 {
 	/// <summary>
 	/// 验证操作：自己定义实现的验证操作
@@ -35,7 +35,7 @@ namespace ZPW.Util.Validations
 		/// <param name="target">验证目标</param>
 		/// <returns>验证结果</returns>
 		/// <remarks>示例如下：
-		/// <code source="..\ZPW.Util.Test\Validations\ValidationTest.cs" region="UseValidation" lang="cs" title="验证Demo"/>
+		/// <code source="..\TestResults\ZPW.Util.Test\Validations\ValidationTest.cs" region="UseValidation" lang="cs" title="验证Demo"/>
 		/// </remarks>
 		public ValidationResultCollection Validate(object target)
 		{

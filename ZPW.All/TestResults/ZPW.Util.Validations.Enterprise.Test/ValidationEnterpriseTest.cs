@@ -1,16 +1,14 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ZPW.Util.Validations;
 
 
-namespace ZPW.Util.Test.Validations
+namespace ZPW.Util.Validations.Enterprise.Test
 {
 	/// <summary>
 	/// 验证测试
 	/// </summary>
 	[TestClass]
-	public class ValidationTest
+	public class ValidationEnterpriseTest
 	{
 		#region UseValidation
 		/// <summary>

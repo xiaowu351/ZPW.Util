@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ZPW.Util.Core;
 
 namespace ZPW.Util.Extensions
 {
@@ -16,7 +17,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static int ToInt(this string data)
 		{
-			return ConvertHelper.ToInt(data);
+			return CoreHelper.ConvertHelper.ToInt(data);
 		}
 
 		/// <summary>
@@ -25,7 +26,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static int? ToIntOrNull(this string data)
 		{
-			return ConvertHelper.ToIntOrNull(data);
+			return CoreHelper.ConvertHelper.ToIntOrNull(data);
 		}
 
 		/// <summary>
@@ -34,7 +35,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static double ToDouble(this string data)
 		{
-			return ConvertHelper.ToDouble(data);
+			return CoreHelper.ConvertHelper.ToDouble(data);
 		}
 
 		/// <summary>
@@ -43,7 +44,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static double? ToDoubleOrNull(this string data)
 		{
-			return ConvertHelper.ToDoubleOrNull(data);
+			return CoreHelper.ConvertHelper.ToDoubleOrNull(data);
 		}
 
 		/// <summary>
@@ -52,7 +53,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static decimal ToDecimal(this string data)
 		{
-			return ConvertHelper.ToDecimal(data);
+			return CoreHelper.ConvertHelper.ToDecimal(data);
 		}
 
 		/// <summary>
@@ -61,7 +62,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static decimal? ToDecimalOrNull(this string data)
 		{
-			return ConvertHelper.ToDecimalOrNull(data);
+			return CoreHelper.ConvertHelper.ToDecimalOrNull(data);
 		}
 
 		/// <summary>
@@ -70,7 +71,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static DateTime ToDate(this string data)
 		{
-			return ConvertHelper.ToDate(data);
+			return CoreHelper.ConvertHelper.ToDate(data);
 		}
 
 		/// <summary>
@@ -79,7 +80,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static DateTime? ToDateOrNull(this string data)
 		{
-			return ConvertHelper.ToDateOrNull(data);
+			return CoreHelper.ConvertHelper.ToDateOrNull(data);
 		}
 
 		/// <summary>
@@ -88,7 +89,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static Guid ToGuid(this string data)
 		{
-			return ConvertHelper.ToGuid(data);
+			return CoreHelper.ConvertHelper.ToGuid(data);
 		}
 
 		/// <summary>
@@ -97,7 +98,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据</param>
 		public static Guid? ToGuidOrNull(this string data)
 		{
-			return ConvertHelper.ToGuidOrNull(data);
+			return CoreHelper.ConvertHelper.ToGuidOrNull(data);
 		}
 
 		/// <summary>
@@ -106,7 +107,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">数据,范例: "83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A"</param>
 		public static List<Guid> ToGuidList(this string data)
 		{
-			return ConvertHelper.ToGuidList(data);
+			return CoreHelper.ConvertHelper.ToGuidList(data);
 		}
 
 		/// <summary>
@@ -126,7 +127,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">对象</param>
 		public static string ToStr(this object data)
 		{
-			return ConvertHelper.ToString(data);
+			return CoreHelper.ConvertHelper.ToString(data);
 		}
 	}
 }

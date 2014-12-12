@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ZPW.Util.Test.Validations
+namespace ZPW.Util.Validations.Enterprise.Test
 {
 	/// <summary>
 	/// 测试实体
