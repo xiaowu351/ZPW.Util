@@ -50,10 +50,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
-    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
-    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Validation.dll" />
-    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Validation.xml" />
+    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Common.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Common.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Validation.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Validation.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="ZPW.Util.snk" />

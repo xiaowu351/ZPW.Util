@@ -28,7 +28,7 @@ namespace ZPW.Util.Validations.Enterprise.Test
 		public void EmployeeInit()
 		{
 			employee = new Employee();
-			validation = new Validation();
+			validation = new EnterpriseValidation();
 		}
 
 		/// <summary>
@@ -51,7 +51,7 @@ namespace ZPW.Util.Validations.Enterprise.Test
 			var result = validation.Validate(employee);
 			Assert.AreEqual(2, result.Count);
 			Assert.AreEqual("描述不能超过5位", result.LastOrDefault().ErrorMessage);
-		} 
+		}
 		#endregion
 	}
 }

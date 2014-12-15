@@ -53,6 +53,19 @@ namespace ZPW.Util.Test.Core
 			{
 				Assert.AreEqual(false, fileHandle.IsInvalid);
 			}
+
+
+			//独占本地不存在文件
+			using (SafeFileHandle fileHandle = CoreHelper.IOHelper.OccupyDirFileHandle(Path.Combine(TestContext.TestDeploymentDir, "outss.txt")))
+			{
+				Assert.AreEqual(true, fileHandle.IsInvalid);
+			}
+
+			//尝试独占测试的临时目录下的文件
+			using (SafeFileHandle fileHandle = CoreHelper.IOHelper.OccupyDirFileHandle(Path.Combine(TestContext.TestDeploymentDir, fileName)))
+			{
+				Assert.AreEqual(false, fileHandle.IsInvalid);
+			}
 		}
 
 

@@ -49,6 +49,9 @@
     <Reference Include="ZPW.Util">
       <HintPath>..\..\Output\ZPW.Util.dll</HintPath>
     </Reference>
+    <Reference Include="ZPW.Util.Validations.Enterprise">
+      <HintPath>..\..\Output\ZPW.Util.Validations.Enterprise.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -69,12 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ZPW.Util.Test.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\SourceCode\ZPW.Util.Validations.Enterprise\ZPW.Util.Validations.Enterprise.csproj">
-      <Project>{20cbe33d-f0b5-4d0e-b22d-4bd12037eea8}</Project>
-      <Name>ZPW.Util.Validations.Enterprise</Name>
-    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

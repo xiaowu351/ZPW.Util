@@ -64,11 +64,11 @@ namespace ZPW.Util.Core
 				{
 					hWndPtr = APIHelper._lopen(file.FullName, OF_READWRITE | OF_SHARE_DENY_NONE);
 					if (hWndPtr == HFILE_ERROR)
-					{
+					{//错误的话，不会占用
 						fileName = file.FullName;
-						APIHelper.CloseHandle(hWndPtr);
 						return true;
 					}
+					APIHelper.CloseHandle(hWndPtr);
 				}
 				return false;
 			}

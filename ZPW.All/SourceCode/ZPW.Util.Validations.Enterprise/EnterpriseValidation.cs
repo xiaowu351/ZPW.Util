@@ -5,10 +5,10 @@ namespace ZPW.Util.Validations.Enterprise
 	/// <summary>
 	/// 企业库验证操作
 	/// </summary>
-    public class Validation:IValidation
-    {
+	public class EnterpriseValidation : IValidation
+	{
 
-		
+
 
 		#region IValidation 成员
 		/// <summary>
@@ -33,7 +33,7 @@ namespace ZPW.Util.Validations.Enterprise
 			var result = new ValidationResultCollection();
 			foreach (var each in results)
 			{
-				result.Add(new System.ComponentModel.DataAnnotations.ValidationResult(each.Message));	
+				result.Add(new System.ComponentModel.DataAnnotations.ValidationResult(each.Message));
 			}
 			return result;
 		}
