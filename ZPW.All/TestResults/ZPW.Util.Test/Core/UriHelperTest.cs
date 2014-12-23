@@ -31,5 +31,7 @@ namespace ZPW.Util.Test.Core
 			string bookmarkString = CoreHelper.UriHelper.GetBookmarkStringInUrl("http://localhost/zhoupingwu?test=1#littleTurtle");
 			Assert.AreEqual("#littleTurtle", bookmarkString);
 		}
+
+		 
 	}
 }

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -58,9 +59,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Configuration\DemoClass\RegisterServersConfigurationSection.cs" />
+    <Compile Include="Configuration\DemoClass\UriConfigurationElement.cs" />
+    <Compile Include="Configuration\ConfigurationTest.cs" />
     <Compile Include="Core\ConvertHelperTest.cs" />
     <Compile Include="Core\ExceptionHelperTest.cs" />
     <Compile Include="Core\IOHelperTest.cs" />
+    <Compile Include="Core\TestClass\ShellApi.cs" />
+    <Compile Include="Core\TestClass\ShellFileOperation.cs" />
+    <Compile Include="Core\TestClass\ShellNameMapping.cs" />
+    <Compile Include="Core\TestClass\ShellApiTest.cs" />
     <Compile Include="Core\UriHelperTest.cs" />
     <Compile Include="Core\UuidHelperTest.cs" />
     <Compile Include="Exceptions\WarningExceptionTest.cs" />
@@ -77,6 +85,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="ZPW.Util.Test.testrunconfig">
       <SubType>Designer</SubType>
     </None>

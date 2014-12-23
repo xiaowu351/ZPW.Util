@@ -1,10 +1,12 @@
 ﻿
+using System;
+
 namespace ZPW.Util.Core
 {
 	/// <summary>
 	/// 身份证验证结果
 	/// </summary>
-	public enum IdCardResult
+	public enum EnumIdCardResult
 	{
 		/// <summary>
 		/// 空
@@ -30,5 +32,30 @@ namespace ZPW.Util.Core
 		/// 身份证验证码非法
 		/// </summary>
 		ErrorCard
+	}
+
+
+	/// <summary>
+	/// 应用模型枚举
+	/// </summary>
+	[Flags]
+	public enum EnumInstanceMode
+	{
+		/// <summary>
+		/// 空值
+		/// </summary>
+		None = 0,
+		/// <summary>
+		/// Windows应用
+		/// </summary>
+		Windows =1,
+		/// <summary>
+		/// Web应用
+		/// </summary>
+		Web =2,
+		/// <summary>
+		/// Wcf应用
+		/// </summary>
+		WCF =4
 	}
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
 using System.Reflection;
+using System.ServiceModel;
+using System.Text;
 using System.Web;
 using ZPW.Util.Properties;
 
@@ -159,6 +161,81 @@ namespace ZPW.Util.Core
 					ex = ex.InnerException;
 				}
 				return lasterException;
+			}
+
+			/// <summary>
+			/// 获取异常的详细信息
+			/// </summary>
+			/// <param name="e">异常对象</param>
+			/// <returns>返回异常的详细信息</returns>
+			public static string GetExceptionDetail(Exception e)
+			{
+				StringBuilder builder = new StringBuilder();
+
+				builder.AppendFormat("在应用程序域\"{0}\"中发生异常！\r\n", AppDomain.CurrentDomain.FriendlyName);
+
+				//带检查
+				for (Exception innerExp = e; innerExp != null; innerExp = innerExp.InnerException)
+				{
+					builder.AppendFormat("-----------------{0}:{1}-----------------\r\n{2}\r\n", innerExp.GetType().Name,
+						innerExp.Message, innerExp.StackTrace);
+					builder.AppendFormat("{0}\r\n", HandleException(innerExp));
+				}
+				return builder.ToString();
+			}
+
+			/// <summary>
+			/// 解析异常类型
+			/// </summary>
+			/// <param name="innerExp">Exception对象</param>
+			/// <returns>返回详细信息</returns>
+			private static string HandleException(Exception innerExp)
+			{
+				StringBuilder builder = new StringBuilder();
+
+				while (innerExp != null)
+				{
+					//服务端异常
+					FaultException<string> faultEx = innerExp as FaultException<string>;
+					if (faultEx != null)
+					{
+						builder.AppendFormat("-------------------{0}：{1}-----------------\r\n", faultEx.GetType().Name, faultEx.Message);
+						builder.AppendLine(faultEx.Detail);
+						break;
+					}
+
+					//SOAP 错误
+					FaultException faultEx1 = innerExp as FaultException;
+					if (faultEx1 != null)
+					{
+						builder.AppendLine(faultEx1.ToString());
+						break;
+					}
+
+					//给进程或操作分配的时间过期时引发的异常
+					TimeoutException timeoutEx = innerExp as TimeoutException;
+					if (timeoutEx != null)
+					{
+						builder.AppendLine("连接服务器发生异常，超时！");
+						builder.AppendLine(timeoutEx.ToString());
+						break;
+					}
+
+					//服务或客户端应用程序中的通信错误。
+					CommunicationException commuEx = innerExp as CommunicationException;
+					if (commuEx != null)
+					{
+						builder.AppendLine("连接服务器发生异常，通信错误！");
+						builder.AppendLine(commuEx.ToString());
+						break;
+					}
+
+					builder.AppendFormat("-----------------{0} : {1}--------------------\r\n{2}", innerExp.GetType().Name,
+						innerExp.Message, innerExp.StackTrace);
+					innerExp = innerExp.InnerException;
+
+				}
+				return builder.ToString();
 			}
 		}
 	}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Web;
 
@@ -72,8 +73,6 @@ namespace ZPW.Util.Core
 				return result;
 			}
 
-
-
 			/// <summary>
 			/// 得到url中的最后书签部分，“#”后面的部分。通常放在url最后
 			/// </summary>
@@ -97,14 +96,41 @@ namespace ZPW.Util.Core
 				return result;
 			}
 
+			/// <summary>
+			/// 解析uri，如果Uri是相对路径，处理Uri中~ ，将其替换成当前Web应用
+			/// </summary>
+			/// <param name="uriValue">待处理uri</param>
+			/// <returns>返回实际有效的URi对象</returns>
+			public static Uri AbsoluteUri(string uriValue)
+			{
+				ExceptionHelper.CheckStringIsNullOrEmpty(uriValue, "uriValue");
+				//ExceptionHelper.FalseThrow(System.Uri.CheckSchemeName(uriValue), "无效的URI地址");
 
+				Uri url = new Uri(uriValue, UriKind.RelativeOrAbsolute);
+				if (url.IsAbsoluteUri)
+					return url;
+
+				//如果是Web应用程序，且包含 ~ 符号。则替换成实际路径
+				if (EnvironmentHelper.Mode == EnumInstanceMode.Web && uriValue[0] == '~')
+				{
+					string appPathAndQuery = HttpContext.Current.Request.ApplicationPath + uriValue.Substring(1);
+					appPathAndQuery = appPathAndQuery.Replace("//", "/");
+					uriValue = HttpContext.Current.Request.Url.GetComponents(UriComponents.SchemeAndServer, UriFormat.SafeUnescaped) + appPathAndQuery;
+					url = new Uri(uriValue);
+				}
+				return url;
+			}
+
+
+			#region private static
 			/// <summary>
 			/// 添加paramName键的值到result中。如果键已存在，则会追加到该键后面以“,”隔开。
 			/// </summary>
 			/// <param name="paramName">键</param>
 			/// <param name="paramValue">值</param>
 			/// <param name="result">键值集合</param>
-			private static void AddValueToCollection(string paramName, string paramValue, NameValueCollection result)
+			private static void AddValueToCollection(string paramName, string paramValue, NameValueCollection
+	result)
 			{
 				string oriValue = result[paramName];
 				if (oriValue == null)
@@ -120,6 +146,8 @@ namespace ZPW.Util.Core
 					result[paramName] = rValue;
 				}
 			}
+
+			#endregion
 		}
 	}
 

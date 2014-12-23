@@ -73,11 +73,44 @@ namespace ZPW.Util.Test.Core
 		/// 测试文件独占时，参数异常
 		/// </summary>
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentNullException))]
-		public void OccupyDirFileHandlerArgumentNullExceptionTest()
+		[ExpectedException(typeof(ArgumentNullException), "引发参数为null的异常")]
+		public void OccupyDirFileHandleArgumentNullExceptionTest()
 		{
 			CoreHelper.IOHelper.OccupyDirFileHandle(string.Empty);
 			CoreHelper.IOHelper.OccupyDirFileHandle(null);
+		}
+
+		/// <summary>
+		/// 测试文件夹独占，并删除文件夹
+		/// </summary>
+		[TestMethod]
+		[ExpectedException(typeof(System.IO.IOException), "引发IOException异常")]
+		public void OccupyDirFileHandleDeleteDir()
+		{
+			DirectoryInfo directoryInfo = new DirectoryInfo(@"C:\temp_test");
+			if (directoryInfo.Exists == false)
+				directoryInfo.Create();
+			try
+			{
+				directoryInfo.Refresh();
+				using (SafeFileHandle handle = CoreHelper.IOHelper.OccupyDirFileHandle(directoryInfo.FullName))
+				{
+					Assert.AreEqual(false, handle.IsInvalid);
+					if (directoryInfo.Exists)
+						directoryInfo.Delete(true);
+				}
+			}
+			catch (IOException ex)
+			{
+
+				throw ex;
+			}
+			finally
+			{
+				directoryInfo.Refresh();
+				if (directoryInfo.Exists)
+					directoryInfo.Delete(true);
+			}
 		}
 		#endregion
 

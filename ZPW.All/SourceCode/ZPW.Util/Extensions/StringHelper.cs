@@ -1,22 +1,85 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using ZPW.Util.Core;
+using ZPW.Util.Properties;
 
 namespace ZPW.Util.Extensions
 {
 	/// <summary>
-	/// 
+	/// 提供常用字符串数据的综合处理 
 	/// </summary>
+	/// <remarks>
+	/// 处理内容包括：
+	/// 1. 半角和全角的转换
+	/// 2. 中国大陆身份证的验证以及15位转18位的实现
+	/// 3. 常用正则表达式验证。如Email、网址、金额
+	/// </remarks>
 	public static class StringHelper
 	{
+		#region 全角半角转换
+
+		/// <summary>
+		/// 全角转半角的函数（DBC）
+		/// </summary>
+		/// <param name="source">任意字符串</param>
+		/// <returns>半角字符串</returns>
+		/// <remarks>
+		/// 全角空格为12288，半角空格为32
+		/// 其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
+		/// </remarks>
+		public static string ToDBC(this string source)
+		{
+			char[] temp = source.ToCharArray();
+			for (int i = 0; i < temp.Length; i++)
+			{
+				if (temp[i] == 12288)
+				{
+					temp[i] = (char)32;
+					continue;
+				}
+				if (temp[i] > 65280 && temp[i] < 65375)
+				{
+					temp[i] = (char)(temp[i] - 65248);
+				}
+			}
+			return new string(temp);
+		}
+
+
+		/// <summary>
+		/// 半角转全角的函数（DBC）
+		/// </summary>
+		/// <param name="source">任意字符串</param>
+		/// <returns>全角字符串</returns>
+		/// <remarks>
+		/// 全角空格为12288，半角空格为32
+		/// 其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
+		/// </remarks>
+		public static string ToSBC(this string source)
+		{
+			char[] temp = source.ToCharArray();
+			for (int i = 0; i < temp.Length; i++)
+			{
+				if (temp[i] == 32)
+				{
+					temp[i] = (char)12288;
+					continue;
+				}
+				if (temp[i] < 127)
+				{
+					temp[i] = (char)(temp[i] + 65248);
+				}
+			}
+			return new string(temp);
+		}
+		#endregion
+
+		#region 身份证处理
 		/// <summary>
 		/// 全国省市
 		/// </summary>
-		private readonly static string[] ChinaCity = new string[]
+		private readonly static string[] ChinaCity =
 		{
 			null,null,null,null,null,null,null,null,null,null,
 			null,"北京市","天津市","河北省","山西省","内蒙古自治区",null,null,null,null,
@@ -31,14 +94,14 @@ namespace ZPW.Util.Extensions
 
 		};
 		/// <summary>
-		/// 验证码
+		/// 验证码字符
 		/// </summary>
-		private readonly static char[] CardCode = new char[] { '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' };
+		private readonly static char[] CardCode = { '1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2' };
 
 		/// <summary>
-		/// 加权因子
+		/// 加权因子常数
 		/// </summary>
-		private static readonly int[] CardWi = new[] { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
+		private static readonly int[] CardWi = { 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 };
 		/// <summary>
 		/// 中国大陆身份验证程序
 		/// </summary>
@@ -76,38 +139,38 @@ namespace ZPW.Util.Extensions
 		/// 
 		/// 根据上面表，查出计算结果为2的校验码对应为X，故该人员的公民身份证应该为：34052419800101001X 
 		/// </remarks>
-		public static IdCardResult CheckIdCard(this string idCard)
+		public static EnumIdCardResult CheckIdCard(this string idCard)
 		{
 			idCard = idCard.ToUpper();
 			Regex regex = idCard.Length == 15 ? new Regex(@"^\d{15}$") : new Regex(@"^\d{17}(\d|x|X)$");
 			Match match = regex.Match(idCard);
 			if (false == match.Success)
 			{
-				return IdCardResult.ErrorString;
+				return EnumIdCardResult.ErrorString;
 			}
 
 			int sub = idCard.Length == 15 ? 0 : 2;
 			string birthday = string.Format("{0}{1}-{2}-{3}", (idCard.Length == 15 ? "19" : string.Empty), idCard.Substring(6, 2 + sub), idCard.Substring(8 + sub, 2), idCard.Substring(10 + sub, 2));
 
 			if (ChinaCity[int.Parse(idCard.Substring(0, 2), CultureInfo.InvariantCulture)] == null)
-				return IdCardResult.ErrorProvince;
+				return EnumIdCardResult.ErrorProvince;
 			DateTime result;
 			if (false == DateTime.TryParse(birthday, out result))
-				return IdCardResult.ErrorBirthday;
+				return EnumIdCardResult.ErrorBirthday;
 
 			if (idCard.Length == 18)
 			{
 				int iSum = 0;
 				for (int i = 17; i > 0; i--)
 				{
-					iSum += CardWi[17-i] * int.Parse(idCard[17 - i].ToString());
+					iSum += CardWi[17 - i] * int.Parse(idCard[17 - i].ToString());
 				}
 				int code = iSum % 11;
 				if (idCard[17] != CardCode[code])
-					return IdCardResult.ErrorCard;
+					return EnumIdCardResult.ErrorCard;
 			}
 
-			return IdCardResult.Success;
+			return EnumIdCardResult.Success;
 		}
 
 		/// <summary>
@@ -117,13 +180,168 @@ namespace ZPW.Util.Extensions
 		/// <returns>转换成功的身份证编号</returns>
 		public static string ConvertIdCard15To18(this string idCard)
 		{
-			IdCardResult cardResult = CheckIdCard(idCard);
-			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == IdCardResult.ErrorBirthday, "原始身份证{0}编码生日非法", idCard);
-			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == IdCardResult.ErrorProvince, "原始身份证{0}编码地区非法", idCard);
-			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == IdCardResult.ErrorString, "原始身份证{0}编码非法", idCard);
-			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == IdCardResult.ErrorCard, "原始身份证{0}编码校验码非法", idCard);
-			return string.Empty;
+			EnumIdCardResult cardResult = CheckIdCard(idCard);
+			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorBirthday, "原始身份证{0}编码生日非法", idCard);
+			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorProvince, "原始身份证{0}编码地区非法", idCard);
+			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorString, "原始身份证{0}编码非法", idCard);
+			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorCard, "原始身份证{0}编码校验码非法", idCard);
+
+			//新身份证号：填在第6位，及第7位上。'1'和'9'两个字符
+			string peridnew = string.Format("{0}19{1}", idCard.Substring(0, 6), idCard.Substring(6, 9));
+
+			int iSum = 0;
+			for (int i = 17; i > 0; i--)
+			{
+				iSum += CardWi[17 - i] * int.Parse(peridnew[17 - i].ToString());
+			}
+			int code = iSum % 11;
+
+			return string.Format("{0}{1}", peridnew, CardCode[code]);
 
 		}
+		#endregion
+
+		#region 常用正则表达式实现
+		/// <summary>
+		/// 是否存在正则表达式的匹配成功项目
+		/// </summary>
+		/// <param name="pattern">正则表达式的定义</param>
+		/// <param name="inputStr">待匹配字符串</param>
+		/// <returns>匹配成功返回true，否则返回false</returns>
+		public static bool HasPattern(string pattern, string inputStr)
+		{
+			Regex regex = new Regex(pattern);
+			return regex.IsMatch(inputStr);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法Email格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateEmail(this string source)
+		{
+			return HasPattern(RegExpResource.EMail, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 Integer格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateInteger(this string source)
+		{
+			return HasPattern(RegExpResource.Integer, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法IP地址格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateIpAddress(this string source)
+		{
+			return HasPattern(RegExpResource.IpAddress, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 金额【最多两位小数】格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateMoney(this string source)
+		{
+			return HasPattern(RegExpResource.Money, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 全字母格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateAlpha(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyAlpha, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 全字母数字格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateAlphaAndNumber(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyAlphaAndNumber, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 小写字母格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateAlphaLower(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyAlphaLower, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 大写字母格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateAlphaUpper(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyAlphaUpper, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法Url地址格式[ftp,http]
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateUrl(this string source)
+		{
+			return HasPattern(RegExpResource.Url, source);
+		}
+		/// <summary>
+		/// 检查字符串是否合法 仅数字格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateNubmer(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyNumber, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 仅汉字字符串格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateChinese(this string source)
+		{
+			return HasPattern(RegExpResource.OnlyChinese, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 手机号格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateMobilePhone(this string source)
+		{
+			return HasPattern(RegExpResource.MobilePhone, source);
+		}
+
+		/// <summary>
+		/// 检查字符串是否合法 固定电话格式
+		/// </summary>
+		/// <param name="source">待检查字符串</param>
+		/// <returns>合法true，非法false</returns>
+		public static bool IsValidateHomePhone(this string source)
+		{
+			return HasPattern(RegExpResource.HomePhone, source);
+		}
+		#endregion
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
 using System.Collections.Generic;
@@ -141,6 +142,20 @@ namespace ZPW.Util.Test.Core
 		public void TrueThrowWithSpecifiedException()
 		{
 			CoreHelper.ExceptionHelper.TrueThrow<InvalidOperationException>(true, "TrueThrowTest");
+		}
+		#endregion
+
+		#region GetExceptionDetail
+
+		[TestMethod]
+		[Description("测试获取异常详细信息GetExceptionDetail")]
+		public void GetExceptionDetailTest()
+		{
+			Exception exception = new ArgumentOutOfRangeException("索引超出异常","单元测试");
+
+			string detail = CoreHelper.ExceptionHelper.GetExceptionDetail(exception);
+
+			Trace.WriteLine(detail);
 		}
 		#endregion
 	}

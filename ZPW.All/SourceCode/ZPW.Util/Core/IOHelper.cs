@@ -75,7 +75,7 @@ namespace ZPW.Util.Core
 
 
 			/// <summary>
-			/// 独占指定文件夹或者文件。如果文件夹或者文件不存在，则返回null。
+			/// 独占指定文件夹或者文件。
 			/// 注意：如果文件占用成功，在使用完之后需要调用Close方法来释放资源。或者使用using来释放
 			/// </summary>
 			/// <param name="driverName">待占用文件</param>
