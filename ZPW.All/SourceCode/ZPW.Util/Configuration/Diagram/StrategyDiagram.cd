@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ZPW.Util.Configuration.Accessory.StrategyContext">
+    <Position X="9.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAQAABAAAAA=</HashCode>
+      <FileName>Configuration\Accessory\StrategyContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZPW.Util.Configuration.Accessory.DirectoryMatchStrategy" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\Accessory\DirectoryMatchStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZPW.Util.Configuration.Accessory.FileNameMatchStrategy" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\Accessory\FileNameMatchStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ZPW.Util.Configuration.Accessory.PathMatchStrategyBase" Collapsed="true">
+    <Position X="5.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAACAAAAAKABIAAAACAAAAAAAAA=</HashCode>
+      <FileName>Configuration\Accessory\PathMatchStrategyBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

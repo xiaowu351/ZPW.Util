@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Output\ZPW.Util.XML</DocumentationFile>
+    <DocumentationFile>..\..\Output\ZPW.Util.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -54,10 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accessory\IStrategy.cs" />
+    <Compile Include="Configuration\Accessory\PathMatchStrategyBase.cs" />
+    <Compile Include="Configuration\Accessory\DirectoryMatchStrategy.cs" />
+    <Compile Include="Configuration\Accessory\FileNameMatchStrategy.cs" />
+    <Compile Include="Configuration\Accessory\StrategyContext.cs" />
     <Compile Include="Configuration\ConfigurationBroker.cs" />
+    <Compile Include="Configuration\Element\MetaApplicationsConfigurationElement.cs" />
+    <Compile Include="Configuration\Element\MetaApplicationsConfigurationElementCollection.cs" />
+    <Compile Include="Configuration\Element\MetaInstanceConfigurationElement.cs" />
     <Compile Include="Configuration\Element\NamedConfigurationElement.cs" />
     <Compile Include="Configuration\Element\NamedConfigurationElementCollection.cs" />
+    <Compile Include="Configuration\SectionGroup\MetaConfigurationSectionGroup.cs" />
     <Compile Include="Configuration\Section\ConfigurationSectionBase.cs" />
+    <Compile Include="Configuration\Section\MetaSourceMappingsConfigurationSection.cs" />
     <Compile Include="Core\ConvertHelper.cs" />
     <Compile Include="Core\EnvironmentHelper.cs" />
     <Compile Include="Core\ExceptionHelper.cs" />
@@ -107,9 +117,7 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\SectionGroup\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

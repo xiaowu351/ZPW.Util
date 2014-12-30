@@ -32,13 +32,13 @@ namespace ZPW.Util.Configuration.Section
 		/// </summary>
 		public static T Instance
 		{
-			get { return instance.Value; }
+			get { return instance.Value.GetConfigurationSection(); }
 		}
 
 		/// <summary>
 		/// 配置节点名称
 		/// </summary>
-		private string ConfigNodeName
+		public string ConfigNodeName
 		{
 			get { return _configNodeName; }
 		}

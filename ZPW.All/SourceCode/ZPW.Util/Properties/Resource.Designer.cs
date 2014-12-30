@@ -68,5 +68,23 @@ namespace ZPW.Util.Properties {
                 return ResourceManager.GetString("CanNotFindNamedConfigElement", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 应用‘{0}’定义了相互冲突的路径‘{1}’和‘{2}’ 的本地化字符串。
+        /// </summary>
+        internal static string ExceptionConfilitPathDefinition {
+            get {
+                return ResourceManager.GetString("ExceptionConfilitPathDefinition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Meta文件&quot;{0}&quot;不存在 的本地化字符串。
+        /// </summary>
+        internal static string MetaFileNotFound {
+            get {
+                return ResourceManager.GetString("MetaFileNotFound", resourceCulture);
+            }
+        }
     }
 }

@@ -3,6 +3,8 @@
   <Description>这是本地测试运行的默认测试运行配置。</Description>
   <Deployment userDeploymentRoot="../../TestResults" useDefaultDeploymentRoot="false">
     <DeploymentItem filename="Core\TestData\out.txt" />
+    <DeploymentItem filename="Configuration\TestData\MetaGlobalTest.config" />
+    <DeploymentItem filename="Configuration\TestData\ZPW.Framework.config" />
   </Deployment>
   <NamingScheme baseName="ZPW.Util.Test" useDefault="false" />
   <Execution>

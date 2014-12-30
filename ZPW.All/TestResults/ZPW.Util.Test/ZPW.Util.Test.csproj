@@ -62,6 +62,8 @@
     <Compile Include="Configuration\DemoClass\RegisterServersConfigurationSection.cs" />
     <Compile Include="Configuration\DemoClass\UriConfigurationElement.cs" />
     <Compile Include="Configuration\ConfigurationTest.cs" />
+    <Compile Include="Configuration\DemoClass\ClientWebSectionGroup.cs" />
+    <Compile Include="Configuration\DemoClass\PageContentConfigurationSection.cs" />
     <Compile Include="Core\ConvertHelperTest.cs" />
     <Compile Include="Core\ExceptionHelperTest.cs" />
     <Compile Include="Core\IOHelperTest.cs" />
@@ -85,7 +87,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Configuration\TestData\MetaGlobalTest.config" />
+    <None Include="Configuration\TestData\ZPW.Framework.config" />
     <None Include="ZPW.Util.Test.testrunconfig">
       <SubType>Designer</SubType>
     </None>
@@ -94,6 +100,7 @@
   <ItemGroup>
     <Content Include="Core\TestData\out.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
