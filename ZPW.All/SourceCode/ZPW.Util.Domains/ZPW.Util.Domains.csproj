@@ -43,9 +43,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Employee.cs" />
+    <Compile Include="EntityBase.cs" />
     <Compile Include="EntityBase`.cs" />
+    <Compile Include="Factory\ValidationFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationHandlers\Impl\ValidationHandler.cs" />
+    <Compile Include="ValidationHandlers\IValidationHandler.cs" />
+    <Compile Include="ValidationRule\IValidationRule.cs" />
+    <Compile Include="ValidationRule\Impl\OldProgrammerSalaryRule.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

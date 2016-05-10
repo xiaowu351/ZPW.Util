@@ -1,0 +1,10 @@
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\obj\Debug\Wintellect.PowerCollections.Unit.Tests.csprojResolveAssemblyReference.cache
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\UnitTests.exe.config
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\UnitTests.exe
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\UnitTests.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\Wintellect.PowerCollections.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\Wintellect.PowerCollections.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\Wintellect.PowerCollections.xml
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\obj\Debug\UnitTests.exe
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\obj\Debug\UnitTests.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\Wintellect.PowerCollections.Unit.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll

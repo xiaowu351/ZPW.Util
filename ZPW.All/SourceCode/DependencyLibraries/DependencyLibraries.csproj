@@ -62,6 +62,9 @@
     <Content Include="EnterpriseLibrary\6.0\Microsoft.Practices.EnterpriseLibrary.Validation.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Newtonsoft.Json\Newtonsoft.Json.dll" />
+    <Content Include="Newtonsoft.Json\Newtonsoft.Json.pdb" />
+    <Content Include="Newtonsoft.Json\Newtonsoft.Json.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ZPW.Util.snk" />

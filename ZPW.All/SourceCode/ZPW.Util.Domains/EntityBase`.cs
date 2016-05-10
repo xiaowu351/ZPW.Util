@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ZPW.Util.Domains.Factory;
+using ZPW.Util.Domains.ValidationHandlers;
+using ZPW.Util.Domains.ValidationHandlers.Impl;
 using ZPW.Util.Extensions;
+using ZPW.Util.Validations;
 
 namespace ZPW.Util.Domains
 {
-	/// <summary>
-	/// 领域实体
-	/// </summary>
-	/// <typeparam name="TKey">标识类型</typeparam>
-	public abstract class EntityBase<TKey>
+    /// <summary>
+    /// 领域实体
+    /// </summary>
+    /// <typeparam name="TKey">标识类型</typeparam>
+    public abstract class EntityBase<TKey>
 	{
 
 		#region 构造方法
@@ -24,7 +26,9 @@ namespace ZPW.Util.Domains
 		protected EntityBase(TKey id)
 		{
 			Id = id;
-		}
+            _handler = new ValidationHandler();
+
+        }
 
 		#endregion
 
@@ -35,14 +39,19 @@ namespace ZPW.Util.Domains
 		/// </summary>
 		private StringBuilder _description;
 
-		#endregion
+        /// <summary>
+        /// 验证规则集合
+        /// </summary>
+        private readonly List<IValidationRule> _rules;
 
-		#region Id(标识)
+        #endregion
 
-		/// <summary>
-		/// 标识
-		/// </summary>
-		[Required]
+        #region Id(标识)
+
+        /// <summary>
+        /// 标识
+        /// </summary>
+        [Required]
 		public TKey Id { get; private set; }
 
 		#endregion
@@ -150,6 +159,68 @@ namespace ZPW.Util.Domains
 			_description.AppendFormat("{0}:{1},", name, value);
 		}
 
-		#endregion
-	}
+        #endregion
+
+        #region ValidationHandler
+        /// <summary>
+        /// 验证处理器
+        /// </summary>
+        private IValidationHandler _handler;
+
+        /// <summary>
+        /// 设置验证处理器
+        /// </summary>
+        /// <param name="handler">验证处理器</param>
+        public void SetValidationHandler(IValidationHandler handler)
+        {
+            if (handler == null)
+                return;
+            _handler = handler;
+        }
+        #endregion
+
+        #region Validate
+
+        /// <summary>
+        /// 添加验证规则
+        /// </summary>
+        /// <param name="rule">验证规则</param>
+        public void AddValidationRule(IValidationRule rule)
+        {
+            if (rule == null)
+                return;
+            _rules.Add(rule);
+        }
+
+        /// <summary>
+        /// 验证
+        /// </summary>
+        public virtual void Validate()
+        {
+            var results = GetValidationResult(); 
+            _handler.Handle(results);
+        }
+
+
+        /// <summary>
+        /// 获取验证结果
+        /// </summary>
+        private ValidationResultCollection GetValidationResult()
+        {
+            var result = ValidationFactory.Create().Validate(this);
+            Validate(result);
+            foreach (var rule in _rules)
+                result.Add(rule.Validate());
+            return result;
+        }
+
+        /// <summary>
+        /// 验证并添加到验证结果集合
+        /// </summary>
+        /// <param name="results">验证结果集合</param>
+        protected virtual void Validate(ValidationResultCollection results)
+        {
+        }
+        #endregion
+    }
 }

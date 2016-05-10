@@ -1,0 +1,13 @@
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.Domains.Tests.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.Domains.Tests.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.Domains.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\Newtonsoft.Json.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.Domains.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\ZPW.Util.xml
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\Newtonsoft.Json.pdb
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\bin\Debug\Newtonsoft.Json.xml
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\obj\Debug\ZPW.Util.Domains.Test.csprojResolveAssemblyReference.cache
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\obj\Debug\ZPW.Util.Domains.Tests.dll
+F:\ASP.NET MVC\Demo项目相关\Util应用程序框架\ZPW.Util\ZPW.All\UnitTests\ZPW.Util.Domains.Test\obj\Debug\ZPW.Util.Domains.Tests.pdb

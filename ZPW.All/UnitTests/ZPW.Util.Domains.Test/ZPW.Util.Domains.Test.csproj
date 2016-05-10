@@ -6,8 +6,8 @@
     <ProjectGuid>{597EED76-E005-45C5-8521-8A1E489B2C98}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ZPW.Util.Domains.Test</RootNamespace>
-    <AssemblyName>ZPW.Util.Domains.Test</AssemblyName>
+    <RootNamespace>ZPW.Util.Domains.Tests</RootNamespace>
+    <AssemblyName>ZPW.Util.Domains.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,12 +45,22 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityBaseTest.cs" />
+    <Compile Include="Samples\Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\SourceCode\ZPW.Util.Domains\ZPW.Util.Domains.csproj">
+      <Project>{432f89be-1acf-4258-96fe-58fadef2560a}</Project>
+      <Name>ZPW.Util.Domains</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

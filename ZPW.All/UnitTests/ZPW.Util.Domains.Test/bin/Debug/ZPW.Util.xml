@@ -1,0 +1,1638 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ZPW.Util</name>
+    </assembly>
+    <members>
+        <member name="T:ZPW.Util.Accessory.IStrategy`2">
+            <summary>
+            策略模式接口类
+            </summary>
+            <remarks>
+            定义抽象的Strategy对象计算过程。
+            </remarks>
+            <typeparam name="TData">计算对象类型</typeparam>
+            <typeparam name="TResult">计算结果类型</typeparam>
+        </member>
+        <member name="M:ZPW.Util.Accessory.IStrategy`2.Calculate(`0)">
+            <summary>
+            根据输入信息计算结果的算法部分
+            </summary>
+            <param name="data">输入数据</param>
+            <returns>结算结果</returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase">
+            <summary>
+             路径匹配算法实现基类
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.path">
+            <summary>
+            定义获取应用类型路径，供子类赋值使用
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.candidates">
+            <summary>
+            待计算的数据
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.Calculate(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            筛选文件，返回匹配的文件
+            </summary>
+            <param name="data">待筛选的文件集合</param>
+            <returns>返回匹配的文件，如果没有找到则返回string.empty</returns>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.Candidates">
+            <summary>
+            待筛选的文件路径
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.IsDirectory(System.String)">
+            <summary>
+            判断某个路径是否为目录
+            </summary>
+            <param name="folderPath">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.ToLowerTrim(System.String)">
+            <summary>
+            转换成小写
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.PathMatchStrategyBase.FileterPath(ZPW.Util.Configuration.Element.MetaInstanceConfigurationElementCollection,System.Boolean)">
+            <summary>
+             依照路径类型（文件/目录）和格式筛选路径
+            </summary>
+            <param name="instances"></param>
+            <param name="isDirectory">是否为目录</param>
+            <returns></returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Accessory.DirectoryMatchStrategy">
+            <summary>
+             路径匹配算法实现基类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.DirectoryMatchStrategy.#ctor(ZPW.Util.Configuration.Element.MetaInstanceConfigurationElementCollection)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="instances">MetaInstanceConfigurationElementCollection集合对象</param>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.DirectoryMatchStrategy.Calculate(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            从路径列表里选择与目标路径最贴近的一项
+            </summary>
+            <param name="data">路径列表</param>
+            <returns>最贴近项目</returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Accessory.FileNameMatchStrategy">
+            <summary>
+             路径匹配算法实现基类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.FileNameMatchStrategy.#ctor(ZPW.Util.Configuration.Element.MetaInstanceConfigurationElementCollection)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="instances">MetaInstanceConfigurationElementCollection集合对象</param>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.FileNameMatchStrategy.Calculate(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            从路径列表里选择与目标路径最贴近的一项
+            </summary>
+            <param name="data">路径列表</param>
+            <returns>最贴近项目</returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Accessory.StrategyContext">
+            <summary>
+            决策模式上下文
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Accessory.StrategyContext.Strategy">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Accessory.StrategyContext.DoAction">
+            <summary>
+            计算路径
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.ConfigurationBroker">
+            <summary>
+            管理所有本地配置文件和映射配置文件
+            远程配置文件映射由ConfigurationFileMap和ConfigurationManager.OpenMappedMachineConfiguration处理
+            约束：
+            <list type="bullet">
+               <item>
+                映射文件必须以ConfigurationSectionGroup和ConfigurationSection开始
+               </item>
+            </list>
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.MetaConfigurationItem">
+            <summary>
+            外部文件配置节点
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.MetaConfigurationSectionGroupItem">
+            <summary>
+            外部节点Section节点名称
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.MachineConfigurationFile">
+            <summary>
+            .net framework 机器配置文件
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.LocalConfigurationFile">
+            <summary>
+            当前应用程序域使用的配置文件
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.GlobalConfigurationFile">
+            <summary>
+            全局配置文件（指定自定义全局配置文件），默认是使用MachineConfigurationFile
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.ConfigurationBroker.MetaConfigurationPosition">
+            <summary>
+            meta配置文件位置枚举
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.MetaConfigurationPosition.LocalFile">
+            <summary>
+            本地文件
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.ConfigurationBroker.MetaConfigurationPosition.MetaFile">
+            <summary>
+            Meta文件
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting">
+            <summary>
+            内部类，用于存放、传递machine、local、meta、global配置文件的地址和meta文件位置（枚举）
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.#cctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.loadFilesSetting(System.String)">
+            <summary>
+            加载所有的配置文件
+            </summary>
+            <param name="globalConfigurationFile">全局配置文件。如果使用默认的配置文件则传null即可</param>
+            <returns>ConfigFilesSetting对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetMetaSourceMappingSection(ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting)">
+            <summary>
+            获取Meta配置中的sourceMappings节点
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.LoadMetaSourceInstanceSectionFromMetaFile(ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting)">
+            <summary>
+            从单独的Meta.config文件中读取Meta配置
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetSingleFileConfiguration(System.String)">
+            <summary>
+            取得单独config文件中的Configuration
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.LoadMetaSourceInstanceSectionFromLocal(ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting)">
+            <summary>
+            从本地config文件中读取meta配置
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.InitConfigFileSettings(ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting)">
+            <summary>
+            初始化ConfigFilesSetting对象。
+            
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.ReplaceEnvironmentVariablesInFilePath(System.String)">
+            <summary>
+            获取Meta文件的地址和位置
+            </summary>
+            <param name="filePath"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetLocalAppSettingsSection">
+            <summary>
+            获取本地config的AppSettings节点
+            </summary>
+            <returns>AppSettingsSection对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetStandardWebConfiguration(System.String)">
+            <summary>
+            获取标准Web应用程序的配置信息，合并Web.config和 global配置文件
+            </summary>
+            <param name="machineConfigPath">global配置文件地址</param>
+            <returns>Web.config和global配置文件合并后的Configuration对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.getStandardExeConfiguration(System.String,System.String)">
+            <summary>
+            获取标准的Winform应用程序的配置信息，合并App.config和global配置文件
+            </summary>
+            <param name="machineConfigPath">global配置文件地址</param>
+            <param name="localConfigPath">本地应用程序配置文件地址</param>
+            <returns>App.config和global配置文件合并后的Configuration对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.getFinalConfiguration(ZPW.Util.Configuration.ConfigurationBroker.ConfigFilesSetting)">
+            <summary>
+            获取最终的local和global合并后的Configuration
+            </summary>
+            <param name="fileSettings">ConfigFilesSetting对象</param>
+            <returns>local和global合并后的Configuration对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetSectionFromGroups(System.String,System.Configuration.ConfigurationSectionGroupCollection)">
+            <summary>
+            从SectionGroup中读取Section，在Section写在group里时使用
+            </summary>
+            <param name="sectionName">section name</param>
+            <param name="groups">sectionGroup</param>
+            <returns>ConfigurationSection对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.ConfigurationBroker.GetSection(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="sectionName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Element.MetaApplicationsConfigurationElement">
+            <summary>
+            实体应用映射配置项
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Element.MetaApplicationsConfigurationElement.AppItem">
+            <summary>
+            配置应用系统的路径配置节点名称和路径
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Element.MetaApplicationsConfigurationElement.Application">
+            <summary>
+            配置的应用系统的路径，可以是绝对路径，也可以是相对路径
+            绝对路径需要指定正确的主机名、IP地址、端口号、用户信息等各字段，匹配要求严格
+            建议使用相对路径，配置要求宽松
+            如果是配置对所有应用都有效，可以配置app="/",不过匹配规则是找到一个匹配的全局文件就不再进行后的匹配。
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement">
+            <summary>
+            sourceMappings 实例配置元素
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.pathItem">
+            <summary>
+            全局配置节点名称path和文件名
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.modeItem">
+            <summary>
+            配置节点名称mode，不可以重复
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.appsItem">
+            <summary>
+            子配置节点项使用的名称
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.Path">
+            <summary>
+            配置文件路径Path
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.Mode">
+            <summary>
+            配置应用的类型Mode
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.InstanceMode">
+            <summary>
+            当前应用类型Mode
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElement.Mappings">
+            <summary>
+            当前实例的配置文件映射
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElementCollection">
+            <summary>
+            sourceMappings配置元素集合
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Element.MetaInstanceConfigurationElementCollection.MatchedPath">
+            <summary>
+            返回值是匹配成功的全局配置文件和文件名称。（即配置项的path的属性值）
+            如果未找到匹配的全局配置文件，则返回值为""
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.NamedConfigurationElement">
+            <summary>
+            以名字为键值的配置项 --叶子节点类
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.NamedConfigurationElement.Name">
+            <summary>
+            name的逻辑名称
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.NamedConfigurationElement.Description">
+            <summary>
+            描述
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.NamedConfigurationElementCollection`1">
+            <summary>
+            以名字为键值的配置元素集合
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.Item(System.Int32)">
+            <summary>
+            按照序号获取指定的配置元素
+            </summary>
+            <param name="index">序号</param>
+            <returns>配置元素</returns>
+        </member>
+        <member name="P:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.Item(System.String)">
+            <summary>
+            按照名称获取长度指定的配置元素
+            </summary>
+            <param name="name">名称</param>
+            <returns>配置元素</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.ContainsKey(System.String)">
+            <summary>
+            是否包含指定的配置元素
+            </summary>
+            <param name="name">配置元素名称</param>
+            <returns>包含返回true，否则false</returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.InnerGet(System.String)">
+            <summary>
+            通过name在字典内查找数据。如果name不存在，则抛出异常。
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.CreateNewElement">
+            <summary>
+            生成新的配置元素实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ZPW.Util.Configuration.NamedConfigurationElementCollection`1.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            得到元素的Key值
+            </summary>
+            <param name="element">配置元素</param>
+            <returns>配置元素所对应的配置元素</returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.SectionGroup.MetaConfigurationSectionGroup">
+            <summary>
+            自定义SectionGroup配置项
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.SectionGroup.MetaConfigurationSectionGroup.SourceMappings">
+            <summary>
+            源配置映射配置项
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1">
+            <summary>
+            分支节点抽象基类
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1.Instance">
+            <summary>
+            单例模式
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1.ConfigNodeName">
+            <summary>
+            配置节点名称
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configNodeName">配置节点名称</param>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1.#ctor(System.String,System.Boolean)">
+            <summary>
+            构造函数。
+            </summary>
+            <param name="configNodeName">配置节点名称</param>
+            <param name="allowNullValue">是否允许为null</param>
+        </member>
+        <member name="M:ZPW.Util.Configuration.Section.ConfigurationSectionBase`1.GetConfigurationSection">
+            <summary>
+            获取配置节点对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ZPW.Util.Configuration.Section.MetaSourceMappingsConfigurationSection">
+            <summary>
+            ConfigurationSection
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Configuration.Section.MetaSourceMappingsConfigurationSection.Name">
+            <summary>
+            Section配置节点名称
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Configuration.Section.MetaSourceMappingsConfigurationSection.Instances">
+            <summary>
+            所有实例的源映射元素集合
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper">
+            <summary>
+            核心帮助类
+            </summary>
+            <summary>
+            核心帮助类
+            </summary>
+            <summary>
+            核心操作类
+            </summary>
+            <summary>
+            核心帮助类
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.ConvertHelper">
+            <summary>
+            转换操作类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToInt(System.Object)">
+            <summary>
+            转换为整型
+            </summary>
+            <param name="data">数据</param>
+            <remarks>示例如下：
+             <code source="..\TestResults\ZPW.Util.Test\Core\ConvertHelperTest.cs" region="ToInt(转换为整型)" lang="cs" title="转换为整型"/>
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToIntOrNull(System.Object)">
+            <summary>
+            转换为可空整型
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDouble(System.Object)">
+            <summary>
+            转换为双精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDouble(System.Object,System.Int32)">
+            <summary>
+            转换为双精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDoubleOrNull(System.Object)">
+            <summary>
+            转换为可空双精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDecimal(System.Object)">
+            <summary>
+            转换为高精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDecimal(System.Object,System.Int32)">
+            <summary>
+            转换为高精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDecimalOrNull(System.Object)">
+            <summary>
+            转换为可空高精度浮点数
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDecimalOrNull(System.Object,System.Int32)">
+            <summary>
+            转换为可空高精度浮点数,并按指定的小数位4舍5入
+            </summary>
+            <param name="data">数据</param>
+            <param name="digits">小数位数</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToGuid(System.Object)">
+            <summary>
+            转换为Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToGuidOrNull(System.Object)">
+            <summary>
+            转换为可空Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToGuidList(System.String)">
+            <summary>
+            转换为Guid集合
+            </summary>
+            <param name="guid">guid集合字符串，范例:83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDate(System.Object)">
+            <summary>
+            转换为日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToDateOrNull(System.Object)">
+            <summary>
+            转换为可空日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToBool(System.Object)">
+            <summary>
+            转换为布尔值
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.GetBool(System.Object)">
+            <summary>
+            获取布尔值
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToBoolOrNull(System.Object)">
+            <summary>
+            转换为可空布尔值
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.ToString(System.Object)">
+            <summary>
+            转换为字符串
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ConvertHelper.To``1(System.Object)">
+            <summary>
+            泛型转换
+            </summary>
+            <typeparam name="TResult">目标类型</typeparam>
+            <param name="data">数据</param>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.ExceptionHelper">
+            <summary>
+            Exception工具，提供了TrueThrow和FalseThrow等方法
+            </summary>
+            <remarks>
+            Exception工具，TrueThrow方法判断它的布尔值参数值是否为true，若是则抛出异常；
+            FalseThrow方法判断它的布尔值参数值是否为false，若是则抛出异常；
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.CheckStringIsNullOrEmpty(System.String,System.String)">
+            <summary>
+            检查字符串参数是否为null或空串，如果是，则抛出异常
+            </summary>
+            <param name="data">字符串参数</param>
+            <param name="paramName">参数名称</param>
+            <remarks>
+            若字符串参数为Null或者空串，抛出ArgumentException异常
+            <code source="..\TestResults\ZPW.Util.Test\Core\ExceptionHelperTest.cs" region="CheckStringIsNullOrEmpty" lang="cs" title="检查字符串参数是否为null或空串，如果是，则抛出异常"/>
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.TrueThrow(System.Boolean,System.String,System.Object[])">
+            <summary>
+            如果条件表达式parseExpressionResult的结果为true，则抛出message指定的错误信息。
+            支持string.Format格式化错误信息
+            </summary>
+            <param name="parseExpressionResult">条件表达式</param>
+            <param name="message">错误信息</param>
+            <param name="messageParams">错误信息参数</param>
+            <remarks>如果条件表达式parseExpressionResult的结果为true，则抛出message指定的错误信息。
+            <code source="..\TestResults\ZPW.Util.Test\Core\ExceptionHelperTest.cs" region="TrueThrowTest" lang="cs" title="通过判断条件表达式的结果值判断是否抛出指定的异常信息"/>
+            <seealso cref="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.FalseThrow(System.Boolean,System.String,System.Object[])"/>
+            </remarks>
+            <example>
+            <code>
+            ExceptionHelper.TrueThrow(name=="zhangsan","对不起，名字不能为{0}",name);
+            </code>
+            </example>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.TrueThrow``1(System.Boolean,System.String,System.Object[])">
+            <summary>
+            如果条件表达式parseExpressionResult的结果为true，则抛出message指定的错误信息。
+            支持string.Format格式化错误信息
+            </summary>
+            <typeparam name="T">异常的类型</typeparam>
+            <param name="parseExpressionResult">条件表达式</param>
+            <param name="message">错误信息</param>
+            <param name="messageParams">错误消息参数</param>
+            <remarks>如果条件表达式parseExpressionResult的结果为true，则抛出message指定的错误信息。
+            <code source="..\TestResults\ZPW.Util.Test\Core\ExceptionHelperTest.cs" region="TrueThrowTest" lang="cs" title="通过判断条件表达式的结果值判断是否抛出指定的异常信息"/>
+            <seealso cref="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.FalseThrow(System.Boolean,System.String,System.Object[])"/>
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.FalseThrow(System.Boolean,System.String,System.Object[])">
+            <summary>
+            如果条件表达式parseExpressionResult的结果为false，则抛出message指定的错误信息。
+            支持string.Format格式化错误信息
+            </summary>
+            <param name="parseExpressionResult">条件表达式</param>
+            <param name="message">错误信息</param>
+            <param name="messageParams">错误信息参数</param>
+            <remarks>如果条件表达式parseExpressionResult的结果为false，则抛出message指定的错误信息。
+            <code source="..\TestResults\ZPW.Util.Test\Core\ExceptionHelperTest.cs" region="FalseThrowTest" lang="cs" title="通过判断条件表达式的结果值判断是否抛出指定的异常信息"/>
+            <seealso cref="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.TrueThrow(System.Boolean,System.String,System.Object[])"/>
+            </remarks>
+            <example>
+            <code>
+            ExceptionHelper.TrueThrow(name!=="zhangsan","对不起，名字不能为{0}",name);
+            </code>
+            </example>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.FalseThrow``1(System.Boolean,System.String,System.Object[])">
+            <summary>
+            如果条件表达式parseExpressionResult的结果为false，则抛出message指定的错误信息。
+            支持string.Format格式化错误信息
+            </summary>
+            <typeparam name="T">异常的类型</typeparam>
+            <param name="parseExpressionResult">条件表达式</param>
+            <param name="message">错误信息</param>
+            <param name="messageParams">错误信息参数</param>
+            <remarks>如果条件表达式parseExpressionResult的结果为false，则抛出message指定的错误信息。
+            <code source="..\TestResults\ZPW.Util.Test\Core\ExceptionHelperTest.cs" region="FalseThrowTest" lang="cs" title="通过判断条件表达式的结果值判断是否抛出指定的异常信息"/>
+            <seealso cref="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.TrueThrow(System.Boolean,System.String,System.Object[])"/>
+            </remarks>
+            <example>
+            <code>
+            ExceptionHelper.TrueThrow&lt;ApplicationException&gt;(name!=="zhangsan","对不起，名字不能为{0}",name);
+            </code>
+            </example>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.GetRealException(System.Exception)">
+            <summary>
+            从Exception对象中，获取真正发生错误的错误对象。
+            </summary>
+            <param name="ex">Exception对象</param>
+            <returns>真正发生错误的Exception对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.GetExceptionDetail(System.Exception)">
+            <summary>
+            获取异常的详细信息
+            </summary>
+            <param name="e">异常对象</param>
+            <returns>返回异常的详细信息</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.ExceptionHelper.HandleException(System.Exception)">
+            <summary>
+            解析异常类型
+            </summary>
+            <param name="innerExp">Exception对象</param>
+            <returns>返回详细信息</returns>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.UriHelper">
+            <summary>
+            提供Uri相关处理的函数。
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UriHelper.GetUriParamCollection(System.Uri)">
+            <summary>
+            分析Url,得到所有的参数集合
+            </summary>
+            <param name="url">Uri类型的Url，绝对路径或者相对路径</param>
+            <returns>NameValueCollection参数集合</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UriHelper.GetUriParamCollection(System.String)">
+            <summary>
+            从Url中获取参数的集合
+            </summary>
+            <param name="uriValue">url地址字符串</param>
+            <returns>NameValueCollection参数集合</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UriHelper.GetBookmarkStringInUrl(System.String)">
+            <summary>
+            得到url中的最后书签部分，“#”后面的部分。通常放在url最后
+            </summary>
+            <param name="queryString">http://localhost/zhoupingwu?test=1#littleTurtle</param>
+            <returns>littleTurtle</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UriHelper.AbsoluteUri(System.String)">
+            <summary>
+            解析uri，如果Uri是相对路径，处理Uri中~ ，将其替换成当前Web应用
+            </summary>
+            <param name="uriValue">待处理uri</param>
+            <returns>返回实际有效的URi对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UriHelper.AddValueToCollection(System.String,System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            添加paramName键的值到result中。如果键已存在，则会追加到该键后面以“,”隔开。
+            </summary>
+            <param name="paramName">键</param>
+            <param name="paramValue">值</param>
+            <param name="result">键值集合</param>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.UuidHelper">
+            <summary>
+            辅助生成连续的UUID类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UuidHelper.NewGuid">
+            <summary>
+            生成连续的UUID，底层调用了Windows API UuidCreateSequential。 
+            </summary>
+            <returns>本机生成连续的Guid</returns>
+            <remarks>
+            经测试发现：UuidCreateSequential，在多CPU并发状态下，有可能会产生重复数据，因此这个方法进行的并发控制，延迟1毫秒。另外，UuidCreateSequential的生成和网络连接有关（网卡个数），如果电脑上插上了Windows Mobile的手机，会产生新的网络连接，导致UuidCreateSequential出错，此时，这个方法将使用传统的Guid来替代Uuid.
+            2014.12.05测试发现，UuidCreateSequential此API函数与网络连接数无关，并且可以生成连续的GUID
+            <code source="..\TestResults\ZPW.Util.Test\Core\UuidHelperTest.cs"  lang="cs" title="检查字符串参数是否为null或空串，如果是，则抛出异常"/>
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.UuidHelper.NewUuidString">
+            <summary>
+            生成连续的Uuid，底层调用了Windows API UuidCreateSequential
+            </summary>
+            <returns>生成连续的Guid</returns>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.APIHelper">
+            <summary>
+            Windows API 帮助类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.APIHelper.UuidCreateSequential(System.Guid@)">
+            <summary>
+            生成连续的UUID
+            </summary>
+            <param name="guid">返回结果guid</param>
+            <returns>返回结果：0表示失败</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.APIHelper.CloseHandle(System.IntPtr)">
+            <summary>
+            销毁句柄
+            </summary>
+            <param name="hWndPtr">句柄对象</param>
+            <returns>成功返回true，否则false</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.APIHelper._lopen(System.String,System.Int32)">
+            <summary>
+            读取或者写指定路径下的文件，如果文件读取失败，则返回IntPtr(-1)对象
+            </summary>
+            <param name="lpPathName">文件全路径名</param>
+            <param name="iReadWrite">读或者写整数值</param>
+            <returns>返回0表示成功。其他任何值都代表一个错误代码</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.APIHelper.CreateFile(System.String,System.UInt32,System.UInt32,System.IntPtr,System.UInt32,System.UInt32,System.IntPtr)">
+            <summary>
+            这个函数可以创建或打开一个对象的句柄，凭借此句柄就可以控制这些对象：控制台对象、通信资源对象、目录对象(只能打开)、磁盘设备对象、文件对象、邮槽对象、管道对象
+            </summary>
+            <param name="lpFileName">文件或者文件夹</param>
+            <param name="dwDesiredAccess">访问模式</param>
+            <param name="dwShareMode">共享模式</param>
+            <param name="lpSecurityAttributes">安全属性，即销毁方式</param>
+            <param name="dwCreationDisposition">怎么创建</param>
+            <param name="dwFlagsAndAttributes">文件属性</param>
+            <param name="hTemplateFile">模版文件句柄</param>
+            <returns>If the function succeeds, the return value is an open handle to the specified file, device, named pipe, or mail slot.</returns>
+            <remarks>
+            详细参数详解见：http://msdn.microsoft.com/en-us/library/windows/desktop/aa363858(v=vs.85).aspx
+            </remarks>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.IOHelper">
+            <summary>
+            Windows API 帮助类
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.CoreHelper.IOHelper.HFILE_ERROR">
+            <summary>
+            错误句柄
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.IOHelper.CheckDirectoryIsUsed(System.IO.DirectoryInfo)">
+            <summary>
+            检查文件夹是否被占用
+            </summary>
+            <param name="directoryInfo">待检查文件夹</param>
+            <returns>占用返回true，否则返回false</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.IOHelper.CheckDirectoryIsUsed(System.IO.DirectoryInfo,System.String@)">
+            <summary>
+            检查文件夹是否被占用，返回占用的文件名
+            </summary>
+            <param name="directoryInfo">文件夹</param>
+            <param name="fileName">返回被占用的文件名</param>
+            <returns>文件夹占用返回true,否则返回false</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.IOHelper.OccupyDirFileHandle(System.String)">
+            <summary>
+            独占指定文件夹或者文件。
+            注意：如果文件占用成功，在使用完之后需要调用Close方法来释放资源。或者使用using来释放
+            </summary>
+            <param name="driverName">待占用文件</param>
+            <returns>返回SafeFileHandle对象</returns>
+        </member>
+        <member name="T:ZPW.Util.Core.CoreHelper.SerializationHelper">
+             <summary>
+            与版本无关的XML序列化转化类
+             </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.JsonSerialize(System.Object)">
+            <summary>
+            将对象object转换成JSON格式字符串
+            </summary>
+            <param name="obj">待转对象</param>
+            <returns>对象的JSON字符串形式</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.JsonDeserialize``1(System.String)">
+            <summary>
+            将json格式字符串转换成指定类型T对象
+            </summary>
+            <typeparam name="T">泛型T</typeparam>
+            <param name="json">待转json字符串</param>
+            <returns>返回实际T类型对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.JsonDeserialize(System.String)">
+            <summary>
+            将json格式字符串转换成object对象
+            </summary>
+            <param name="json">待转json字符串</param>
+            <returns>返回Object对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.JsonDesrialize(System.String,System.Type)">
+            <summary>
+            将json格式字符串转成object对象
+            </summary>
+            <param name="json">待转json字符串</param>
+            <param name="type">指定type类型</param>
+            <returns>返回Object对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.XmlSerialize(System.Object)">
+            <summary>
+            将object对象XML序列化成字符串格式
+            </summary>
+            <param name="obj">待序列化obj对象</param>
+            <returns>Xml序列化字符串</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.XmlDeserialize``1(System.String)">
+            <summary>
+            XML反序列化对象
+            </summary>
+            <typeparam name="T">泛型T</typeparam>
+            <param name="xml">序列化字符串</param>
+            <returns>返回序列化 T 对象</returns>
+        </member>
+        <member name="M:ZPW.Util.Core.CoreHelper.SerializationHelper.XmlDeserialize(System.String,System.Type)">
+            <summary>
+            XML反序列化对象
+            </summary>
+            <param name="xml">序列化字符串</param>
+            <param name="type">type类型</param>
+            <returns>返回序列化对象</returns>
+        </member>
+        <member name="T:ZPW.Util.Core.EnvironmentHelper">
+            <summary>
+            处理应用环境问题的类
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.EnvironmentHelper.CheckIsApplication">
+            <summary>
+            检查当前应用类型是否为Web
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ZPW.Util.Core.EnvironmentHelper.Mode">
+            <summary>
+            当前应用类型：Web、Windows、Wcf
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Core.EnumIdCardResult">
+            <summary>
+            身份证验证结果
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.None">
+            <summary>
+            空
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.Success">
+            <summary>
+            验证成功
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.ErrorString">
+            <summary>
+            身份证非法
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.ErrorProvince">
+            <summary>
+            地区非法
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.ErrorBirthday">
+            <summary>
+            身份证生日非法
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumIdCardResult.ErrorCard">
+            <summary>
+            身份证验证码非法
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Core.EnumInstanceMode">
+            <summary>
+            应用模型枚举
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumInstanceMode.None">
+            <summary>
+            空值
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumInstanceMode.Windows">
+            <summary>
+            Windows应用
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumInstanceMode.Web">
+            <summary>
+            Web应用
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.EnumInstanceMode.WCF">
+            <summary>
+            Wcf应用
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Core.WarningException">
+            <summary>
+            应用程序异常
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.String)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="message">错误消息</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.String,System.String)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="message">错误消息</param>
+            <param name="code">错误码</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.String,System.String,ZPW.Util.Logging.EnumLogLevel)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="message">错误消息</param>
+            <param name="code">错误码</param>
+            <param name="level">日志级别</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.Exception)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="message">错误消息</param>
+            <param name="code">错误码</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.#ctor(System.String,System.String,ZPW.Util.Logging.EnumLogLevel,System.Exception)">
+            <summary>
+            初始化应用程序异常
+            </summary>
+            <param name="message">错误消息</param>
+            <param name="code">错误码</param>
+            <param name="level">日志级别</param>
+            <param name="exception">异常</param>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.GetMessage">
+            <summary>
+            获取错误消息
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.AppendSelfMessage(System.Text.StringBuilder)">
+            <summary>
+            添加本身消息
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.AppendInnerMessage(System.Text.StringBuilder,System.Exception)">
+            <summary>
+            添加内部异常消息
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Core.WarningException.GetData(System.Exception)">
+            <summary>
+            获取添加的额外数据
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Core.WarningException._message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Core.WarningException.Message">
+            <summary>
+            错误消息
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Core.WarningException.TraceId">
+            <summary>
+            跟踪号
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Core.WarningException.Code">
+            <summary>
+            错误码
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Core.WarningException.Level">
+            <summary>
+            日志级别
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Core.WarningException.StackTrace">
+            <summary>
+            堆栈跟踪
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Extensions.StringHelper">
+            <summary>
+            提供常用字符串数据的综合处理 
+            </summary>
+            <remarks>
+            处理内容包括：
+            1. 半角和全角的转换
+            2. 中国大陆身份证的验证以及15位转18位的实现
+            3. 常用正则表达式验证。如Email、网址、金额
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.ToDBC(System.String)">
+            <summary>
+            全角转半角的函数（DBC）
+            </summary>
+            <param name="source">任意字符串</param>
+            <returns>半角字符串</returns>
+            <remarks>
+            全角空格为12288，半角空格为32
+            其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.ToSBC(System.String)">
+            <summary>
+            半角转全角的函数（DBC）
+            </summary>
+            <param name="source">任意字符串</param>
+            <returns>全角字符串</returns>
+            <remarks>
+            全角空格为12288，半角空格为32
+            其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
+            </remarks>
+        </member>
+        <member name="F:ZPW.Util.Extensions.StringHelper.ChinaCity">
+            <summary>
+            全国省市
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Extensions.StringHelper.CardCode">
+            <summary>
+            验证码字符
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Extensions.StringHelper.CardWi">
+            <summary>
+            加权因子常数
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.CheckIdCard(System.String)">
+            <summary>
+            中国大陆身份验证程序
+            </summary>
+            <param name="idCard">待验证的用户身份证号码</param>
+            <returns>验证结果</returns>
+            <remarks>
+            身份证编码规则如下：根据〖中华人民共和国国家标准GB11643-1999〗中有关公民身份号码的规定，公民身份号码是特征组合码，由十七位数字本体码和一位数字校验码组成。
+            排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位数字校验码。
+            地址码：（身份证前六位）表示编码对象第一次申领居民身份证时的常住户口所在县(市、旗、区)的行政区划代码。
+            生日期码：（身份证第七位到第十四位）表示编码对象出生的年、月、日，其中年份用四位数字表示，年、月、日之间不用分隔符。例如：1981年05月11日就用19810511表示。
+            顺序码：（身份证第十五位到十七位）是县、区级政府所辖派出所的分配码，每个派出所分配码为10个连续号码，例如“000-009”或“060-069”，其中单数为男性分配码，双数为女性分配码。
+            校验码：（身份证最后一位）是根据前面十七位数字码，按照ISO7064:1983.MOD11-2校验码计算出来的检验码。
+            
+            15位的身份证编码首先把出生年扩展为4位，简单的就是增加一个19，但是这对于1900年出生的人不使用（这样的寿星不多了）
+            
+            某男性公民身份证号码本体码为 34052419800101001? ，首先按照公式(1)计算：
+            ∑(ai×Wi)(mod 11) .....................................(1)
+            
+            公式(1)中：
+            i-----表示号码字符从右至左包括校验码在内的位置序号；
+            ai-----表示第i位置上的号码字符值；
+            Wi-----表示第i位置上的加权因子，其数值依据公式Wi=2的(n-1)次幂(mod 11) 计算得出。
+            i		18	17	16	15	14	13	12	11	10	9	8	7	6	5	4	3	2	1
+            ai      3	4	0	5	2	4	1	9	8	0	0	1	0	1	0	0	1	?
+            Wi      7	9	10	5	8	4	2	1	6	3	7	9	10	5	8	4	2	1
+            ai×Wi  21	36	0	25	16	16	2	9	48	0	0	9	0	5	0	0	2	?
+            
+            根据公式(1)进行计算：
+            ∑(ai×Wi)=(21+36+0+25+16+16+2+9+48+0+0+9+0+5+0+0+2)=189
+            189÷11 = 17+2/11 即：∑(ai×Wi)(mod 11)=2
+            
+            然后根据计算的结果，从下面的表中查出相应的校验码，其中X表示计算结果为10；
+            ∑(ai×Wi)(mod 11)： 0	1	2	3	4	5	6	7	8	9	10
+            校验码字符值：		 1  0   X   9   8   7   6   5   4   3    2
+            
+            根据上面表，查出计算结果为2的校验码对应为X，故该人员的公民身份证应该为：34052419800101001X 
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.ConvertIdCard15To18(System.String)">
+            <summary>
+            中国大陆身份证15位转18位
+            </summary>
+            <param name="idCard">待验证的用户身份证号码</param>
+            <returns>转换成功的身份证编号</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.HasPattern(System.String,System.String)">
+            <summary>
+            是否存在正则表达式的匹配成功项目
+            </summary>
+            <param name="pattern">正则表达式的定义</param>
+            <param name="inputStr">待匹配字符串</param>
+            <returns>匹配成功返回true，否则返回false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateEmail(System.String)">
+            <summary>
+            检查字符串是否合法Email格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateInteger(System.String)">
+            <summary>
+            检查字符串是否合法 Integer格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateIpAddress(System.String)">
+            <summary>
+            检查字符串是否合法IP地址格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateMoney(System.String)">
+            <summary>
+            检查字符串是否合法 金额【最多两位小数】格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateAlpha(System.String)">
+            <summary>
+            检查字符串是否合法 全字母格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateAlphaAndNumber(System.String)">
+            <summary>
+            检查字符串是否合法 全字母数字格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateAlphaLower(System.String)">
+            <summary>
+            检查字符串是否合法 小写字母格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateAlphaUpper(System.String)">
+            <summary>
+            检查字符串是否合法 大写字母格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateUrl(System.String)">
+            <summary>
+            检查字符串是否合法Url地址格式[ftp,http]
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateNubmer(System.String)">
+            <summary>
+            检查字符串是否合法 仅数字格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateChinese(System.String)">
+            <summary>
+            检查字符串是否合法 仅汉字字符串格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateMobilePhone(System.String)">
+            <summary>
+            检查字符串是否合法 手机号格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="M:ZPW.Util.Extensions.StringHelper.IsValidateHomePhone(System.String)">
+            <summary>
+            检查字符串是否合法 固定电话格式
+            </summary>
+            <param name="source">待检查字符串</param>
+            <returns>合法true，非法false</returns>
+        </member>
+        <member name="T:ZPW.Util.Extensions.ConvertExtension">
+            <summary>
+            类型转换扩展
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToInt(System.String)">
+            <summary>
+            转换为int
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToIntOrNull(System.String)">
+            <summary>
+            转换为可空int
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDouble(System.String)">
+            <summary>
+            转换为double
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDoubleOrNull(System.String)">
+            <summary>
+            转换为可空double
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDecimal(System.String)">
+            <summary>
+            转换为decimal
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDecimalOrNull(System.String)">
+            <summary>
+            转换为可空decimal
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDate(System.String)">
+            <summary>
+            转换为日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToDateOrNull(System.String)">
+            <summary>
+            转换为可空日期
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToGuid(System.String)">
+            <summary>
+            转换为Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToGuidOrNull(System.String)">
+            <summary>
+            转换为可空Guid
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToGuidList(System.String)">
+            <summary>
+            转换为Guid集合
+            </summary>
+            <param name="data">数据,范例: "83B0233C-A24F-49FD-8083-1337209EBC9A,EAB523C6-2FE7-47BE-89D5-C6D440C3033A"</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToGuidList(System.Collections.Generic.IList{System.String})">
+            <summary>
+            转换为Guid集合
+            </summary>
+            <param name="data">字符串集合</param>
+        </member>
+        <member name="M:ZPW.Util.Extensions.ConvertExtension.ToStr(System.Object)">
+            <summary>
+            获取字符串
+            </summary>
+            <param name="data">对象</param>
+        </member>
+        <member name="T:ZPW.Util.Properties.ExceptionResource">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.ExceptionResource.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.ExceptionResource.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.ExceptionResource.StringParamCanNotBeNullOrEmpty">
+            <summary>
+              查找类似 字符串参数{0}不能为空或null 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Properties.RegExpResource">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.EMail">
+            <summary>
+              查找类似 ^([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z]+@([0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.HomePhone">
+            <summary>
+              查找类似 ^0\d{2,3}(\-)?\d{7,8}$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.Integer">
+            <summary>
+              查找类似 ^\+?[1-9][0-9]*$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.IpAddress">
+            <summary>
+              查找类似 ^(?&lt;First&gt;2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?&lt;Second&gt;2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?&lt;Third&gt;2[0-4]\d|25[0-5]|[01]?\d\d?)\.(?&lt;Fourth&gt;2[0-4]\d|25[0-5]|[01]?\d\d?)$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.MobilePhone">
+            <summary>
+              查找类似 ^(1(([35][0-9])|(47)|(70)|[8][012356789]))\d{8}$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.Money">
+            <summary>
+              查找类似 ^[0-9]+(.[0-9]{2})?$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyAlpha">
+            <summary>
+              查找类似 ^[A-Za-z]+$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyAlphaAndNumber">
+            <summary>
+              查找类似 ^[A-Za-z0-9]+$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyAlphaLower">
+            <summary>
+              查找类似 ^[a-z]+$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyAlphaUpper">
+            <summary>
+              查找类似 ^[A-Z]+$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyChinese">
+            <summary>
+              查找类似 ^[\u4e00-\u9fa5]{0,}$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.OnlyNumber">
+            <summary>
+              查找类似 ^([1-9]\d*)$|^0$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.RegExpResource.Url">
+            <summary>
+              查找类似 ^(?&lt;Protocol&gt;\w+):\/\/(?&lt;Domain&gt;[\w.]+\/?)\S*$ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Properties.Resource">
+            <summary>
+              一个强类型的资源类，用于查找本地化的字符串等。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.Resource.ResourceManager">
+            <summary>
+              返回此类使用的缓存的 ResourceManager 实例。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.Resource.Culture">
+            <summary>
+              使用此强类型资源类，为所有资源查找
+              重写当前线程的 CurrentUICulture 属性。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.Resource.CanNotFindNamedConfigElement">
+            <summary>
+              查找类似 不能找到名称为{0}的配置集合元素 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.Resource.ExceptionConfilitPathDefinition">
+            <summary>
+              查找类似 应用‘{0}’定义了相互冲突的路径‘{1}’和‘{2}’ 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Properties.Resource.MetaFileNotFound">
+            <summary>
+              查找类似 Meta文件&quot;{0}&quot;不存在 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Logging.EnumLogLevel">
+            <summary>
+            日志级别
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Logging.EnumLogLevel.Fatal">
+            <summary>
+            致命错误
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Logging.EnumLogLevel.Error">
+            <summary>
+            错误
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Logging.EnumLogLevel.Warning">
+            <summary>
+            警告
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Logging.EnumLogLevel.Information">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Logging.EnumLogLevel.Debug">
+            <summary>
+            调试
+            </summary>
+        </member>
+        <member name="T:ZPW.Util.Validations.IValidation">
+            <summary>
+            验证操作
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.IValidation.Validate(System.Object)">
+            <summary>
+            验证
+            </summary>
+            <param name="target">验证目标</param>
+            <returns>验证结果集合</returns>
+        </member>
+        <member name="T:ZPW.Util.Validations.Impl.Validation">
+            <summary>
+            验证操作：自己定义实现的验证操作
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Validations.Impl.Validation._target">
+            <summary>
+            验证目标
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Validations.Impl.Validation._result">
+            <summary>
+            验证结果
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.Impl.Validation.#ctor">
+            <summary>
+            初始化验证操作
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.Impl.Validation.Validate(System.Object)">
+            <summary>
+            验证
+            </summary>
+            <param name="target">验证目标</param>
+            <returns>验证结果</returns>
+            <remarks>示例如下：
+            <code source="..\TestResults\ZPW.Util.Test\Validations\ValidationTest.cs" region="UseValidation" lang="cs" title="验证Demo"/>
+            </remarks>
+        </member>
+        <member name="M:ZPW.Util.Validations.Impl.Validation.ValidateProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            验证属性
+            </summary>
+            <param name="property">属性</param>
+        </member>
+        <member name="M:ZPW.Util.Validations.Impl.Validation.ValidateAttribute(System.Reflection.PropertyInfo,System.ComponentModel.DataAnnotations.ValidationAttribute)">
+            <summary>
+            验证特性
+            </summary>
+            <param name="property">属性</param>
+            <param name="attribute">验证特性</param>
+        </member>
+        <member name="M:ZPW.Util.Validations.Impl.Validation.GetErrorMessage(System.ComponentModel.DataAnnotations.ValidationAttribute)">
+            <summary>
+            获取错误消息
+            </summary>
+            <param name="attribute">验证特性</param>
+            <returns>错误消息</returns>
+        </member>
+        <member name="T:ZPW.Util.Validations.ValidationResultCollection">
+            <summary>
+            验证结果集合
+            </summary>
+        </member>
+        <member name="F:ZPW.Util.Validations.ValidationResultCollection._results">
+            <summary>
+            验证结果
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.ValidationResultCollection.#ctor">
+            <summary>
+            初始化验证结果集合
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Validations.ValidationResultCollection.IsValid">
+            <summary>
+            是否验证通过
+            </summary>
+        </member>
+        <member name="P:ZPW.Util.Validations.ValidationResultCollection.Count">
+            <summary>
+            验证结果个数
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.ValidationResultCollection.Add(System.ComponentModel.DataAnnotations.ValidationResult)">
+            <summary>
+            添加验证结果
+            </summary>
+            <param name="result">验证结果</param>
+        </member>
+        <member name="M:ZPW.Util.Validations.ValidationResultCollection.GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+        </member>
+        <member name="M:ZPW.Util.Validations.ValidationResultCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            获取迭代器
+            </summary>
+        </member>
+    </members>
+</doc>
