@@ -5,17 +5,18 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ZPW.Util.Core;
 using ZPW.Util.Logging;
+using ZPW.Util.Exceptions;
 
 namespace ZPW.Util.Test.Exceptions
 {
 	/// <summary>
-	/// WarningExceptionTest 的摘要说明
+	/// WarningTest 的摘要说明
 	/// 应用程序异常测试
 	/// </summary>
 	[TestClass]
-	public class WarningExceptionTest
+	public class WarningTest
 	{
-		public WarningExceptionTest()
+		public WarningTest()
 		{
 			//
 			//TODO: 在此处添加构造函数逻辑
@@ -94,8 +95,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestValidate_MessageIsNull()
 		{
-			WarningException warningException = new WarningException(null, "P1");
-			Assert.AreEqual(string.Empty, warningException.Message);
+			Warning Warning = new Warning(null, "P1");
+			Assert.AreEqual(string.Empty, Warning.Message);
 		}
 
 		#endregion
@@ -108,8 +109,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestCode()
 		{
-			WarningException warningException = new WarningException(Message, "P1");
-			Assert.AreEqual("P1", warningException.Code);
+			Warning Warning = new Warning(Message, "P1");
+			Assert.AreEqual("P1", Warning.Code);
 		}
 
 		#endregion
@@ -122,8 +123,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestLogLevel()
 		{
-			WarningException warningException = new WarningException(Message, "P1", EnumLogLevel.Fatal);
-			Assert.AreEqual(EnumLogLevel.Fatal, warningException.Level);
+			Warning Warning = new Warning(Message, "P1", EnumLogLevel.Fatal);
+			Assert.AreEqual(EnumLogLevel.Fatal, Warning.Level);
 		}
 
 		#endregion
@@ -136,8 +137,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestMessage_OnlyMessage()
 		{
-			WarningException warningException = new WarningException(Message);
-			Assert.AreEqual(Message, warningException.Message);
+			Warning Warning = new Warning(Message);
+			Assert.AreEqual(Message, Warning.Message);
 		}
 
 		#endregion
@@ -150,8 +151,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestMessage_OnlyException()
 		{
-			WarningException warningException = new WarningException(GetException());
-			Assert.AreEqual(Message, warningException.Message);
+			Warning Warning = new Warning(GetException());
+			Assert.AreEqual(Message, Warning.Message);
 		}
 
 		/// <summary>
@@ -172,8 +173,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestMessage_Message_Exception()
 		{
-			WarningException warningException = new WarningException(Message2, "P1", EnumLogLevel.Fatal, GetException());
-			Assert.AreEqual(string.Format("{0}\r\n{1}", Message2, Message), warningException.Message);
+			Warning Warning = new Warning(Message2, "P1", EnumLogLevel.Fatal, GetException());
+			Assert.AreEqual(string.Format("{0}\r\n{1}", Message2, Message), Warning.Message);
 		}
 
 		#endregion
@@ -186,8 +187,8 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestMessage_2LayerException()
 		{
-			WarningException warningException = new WarningException(Message3, "P1", EnumLogLevel.Fatal, Get2LayerException());
-			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}", Message3, Message2, Message), warningException.Message);
+			Warning Warning = new Warning(Message3, "P1", EnumLogLevel.Fatal, Get2LayerException());
+			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}", Message3, Message2, Message), Warning.Message);
 		}
 
 		/// <summary>
@@ -200,68 +201,68 @@ namespace ZPW.Util.Test.Exceptions
 
 		#endregion
 
-		#region TestMessage_Warning(设置WarningException异常)
+		#region TestMessage_Warning(设置Warning异常)
 
 		/// <summary>
-		/// 设置WarningException异常
+		/// 设置Warning异常
 		/// </summary>
 		[TestMethod]
 		public void TestMessage_Warning()
 		{
-			WarningException warningException = new WarningException(GetWarning());
-			Assert.AreEqual(Message, warningException.Message);
+			Warning Warning = new Warning(GetWarning());
+			Assert.AreEqual(Message, Warning.Message);
 		}
 
 		/// <summary>
 		/// 获取异常
 		/// </summary>
-		private WarningException GetWarning()
+		private Warning GetWarning()
 		{
-			return new WarningException(Message);
+			return new Warning(Message);
 		}
 
 		#endregion
 
-		#region TestMessage_2LayerWarning(设置2层WarningException异常)
+		#region TestMessage_2LayerWarning(设置2层Warning异常)
 
 		/// <summary>
-		/// 设置2层WarningException异常
+		/// 设置2层Warning异常
 		/// </summary>
 		[TestMethod]
 		public void TestMessage_2LayerWarning()
 		{
-			WarningException warningException = new WarningException(Message3, "", Get2LayerWarning());
-			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}", Message3, Message2, Message), warningException.Message);
+			Warning Warning = new Warning(Message3, "", Get2LayerWarning());
+			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}", Message3, Message2, Message), Warning.Message);
 		}
 
 		/// <summary>
 		/// 获取2层异常
 		/// </summary>
-		private WarningException Get2LayerWarning()
+		private Warning Get2LayerWarning()
 		{
-			return new WarningException(Message2, "", new WarningException(Message));
+			return new Warning(Message2, "", new Warning(Message));
 		}
 
 		#endregion
 
-		#region TestMessage_3LayerWarning(设置3层WarningException异常)
+		#region TestMessage_3LayerWarning(设置3层Warning异常)
 
 		/// <summary>
-		/// 设置3层WarningException异常
+		/// 设置3层Warning异常
 		/// </summary>
 		[TestMethod]
 		public void TestMessage_3LayerWarning()
 		{
-			WarningException warningException = new WarningException(Message4, "", Get3LayerWarning());
-			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}\r\n{3}", Message4, Message3, Message2, Message), warningException.Message);
+			Warning Warning = new Warning(Message4, "", Get3LayerWarning());
+			Assert.AreEqual(string.Format("{0}\r\n{1}\r\n{2}\r\n{3}", Message4, Message3, Message2, Message), Warning.Message);
 		}
 
 		/// <summary>
 		/// 获取3层异常
 		/// </summary>
-		private WarningException Get3LayerWarning()
+		private Warning Get3LayerWarning()
 		{
-			return new WarningException(Message3, "", new Exception(Message2, new WarningException(Message)));
+			return new Warning(Message3, "", new Exception(Message2, new Warning(Message)));
 		}
 
 		#endregion
@@ -274,15 +275,15 @@ namespace ZPW.Util.Test.Exceptions
 		[TestMethod]
 		public void TestAdd_1Layer()
 		{
-			WarningException warningException = new WarningException(Message);
-			warningException.Data.Add("key1", "value1");
-			warningException.Data.Add("key2", "value2");
+			Warning Warning = new Warning(Message);
+			Warning.Data.Add("key1", "value1");
+			Warning.Data.Add("key2", "value2");
 
 			StringBuilder expected = new StringBuilder();
 			expected.AppendLine(Message);
 			expected.AppendLine("key1:value1");
 			expected.AppendLine("key2:value2");
-			Assert.AreEqual(expected.ToString(), warningException.Message);
+			Assert.AreEqual(expected.ToString(), Warning.Message);
 		}
 
 		/// <summary>
@@ -295,9 +296,9 @@ namespace ZPW.Util.Test.Exceptions
 			exception.Data.Add("a", "a1");
 			exception.Data.Add("b", "b1");
 
-			WarningException warningException = new WarningException(exception);
-			warningException.Data.Add("key1", "value1");
-			warningException.Data.Add("key2", "value2");
+			Warning Warning = new Warning(exception);
+			Warning.Data.Add("key1", "value1");
+			Warning.Data.Add("key2", "value2");
 
 			StringBuilder expected = new StringBuilder();
 			expected.AppendLine(Message);
@@ -305,7 +306,7 @@ namespace ZPW.Util.Test.Exceptions
 			expected.AppendLine("b:b1");
 			expected.AppendLine("key1:value1");
 			expected.AppendLine("key2:value2");
-			Assert.AreEqual(expected.ToString(), warningException.Message);
+			Assert.AreEqual(expected.ToString(), Warning.Message);
 		}
 
 		#endregion

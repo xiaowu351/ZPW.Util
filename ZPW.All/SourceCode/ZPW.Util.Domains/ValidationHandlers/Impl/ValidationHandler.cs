@@ -16,7 +16,7 @@ namespace ZPW.Util.Domains.ValidationHandlers.Impl
         {
             if (results.IsValid)
                 return;
-            throw new Core.WarningException(results.First().ErrorMessage);
+            throw new Exceptions.Warning(results.First().ErrorMessage);
         }
     }
 }
