@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using ZPW.Util.Domains.Base;
 
 namespace ZPW.Util.Domains
 {

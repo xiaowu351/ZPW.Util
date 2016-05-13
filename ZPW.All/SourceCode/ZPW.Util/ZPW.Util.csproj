@@ -81,7 +81,10 @@
     <Compile Include="Core\IOHelper.cs" />
     <Compile Include="Core\SerializationHelper.cs" />
     <Compile Include="Exceptions\ConcurrencyException.cs" />
+    <Compile Include="Extensions\Expression.cs" />
+    <Compile Include="Extensions\Lambda.cs" />
     <Compile Include="Extensions\StringHelper.cs" />
+    <Compile Include="Extensions\Validate.cs" />
     <Compile Include="Properties\ExceptionResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

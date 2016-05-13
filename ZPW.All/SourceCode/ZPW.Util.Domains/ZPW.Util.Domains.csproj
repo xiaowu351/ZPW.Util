@@ -44,10 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AggregateRoot.cs" />
-    <Compile Include="DomainBase.cs" />
+    <Compile Include="Base\DomainBase.cs" />
     <Compile Include="Employee.cs" />
-    <Compile Include="EntityBase.cs" />
-    <Compile Include="EntityBase`.cs" />
+    <Compile Include="Base\EntityBase.cs" />
+    <Compile Include="Base\EntityBase`.cs" />
     <Compile Include="Factory\ValidationFactory.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="ValidationHandlers\IValidationHandler.cs" />
     <Compile Include="ValidationRule\IValidationRule.cs" />
     <Compile Include="ValidationRule\Impl\OldProgrammerSalaryRule.cs" />
-    <Compile Include="ValueObjectBase.cs" />
+    <Compile Include="Base\ValueObjectBase.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

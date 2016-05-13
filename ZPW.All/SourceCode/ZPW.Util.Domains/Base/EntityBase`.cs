@@ -1,15 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using ZPW.Util.Domains.Factory;
-using ZPW.Util.Domains.ValidationHandlers;
-using ZPW.Util.Domains.ValidationHandlers.Impl;
-using ZPW.Util.Extensions;
-using ZPW.Util.Validations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace ZPW.Util.Domains
-{
+namespace ZPW.Util.Domains.Base {
     /// <summary>
     /// 领域实体
     /// </summary>

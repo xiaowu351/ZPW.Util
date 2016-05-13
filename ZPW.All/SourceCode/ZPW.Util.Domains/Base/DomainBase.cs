@@ -9,7 +9,7 @@ using ZPW.Util.Domains.ValidationHandlers.Impl;
 using ZPW.Util.Extensions;
 using ZPW.Util.Validations;
 
-namespace ZPW.Util.Domains
+namespace ZPW.Util.Domains.Base
 {
     /// <summary>
     /// 领域层顶级基类

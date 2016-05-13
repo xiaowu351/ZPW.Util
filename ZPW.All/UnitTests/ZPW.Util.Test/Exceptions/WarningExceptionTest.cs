@@ -1,19 +1,15 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ZPW.Util.Core;
-using ZPW.Util.Logging;
 using ZPW.Util.Exceptions;
+using ZPW.Util.Logging;
 
-namespace ZPW.Util.Test.Exceptions
-{
-	/// <summary>
-	/// WarningTest 的摘要说明
-	/// 应用程序异常测试
-	/// </summary>
-	[TestClass]
+namespace ZPW.Util.Test.Exceptions {
+    /// <summary>
+    /// WarningTest 的摘要说明
+    /// 应用程序异常测试
+    /// </summary>
+    [TestClass]
 	public class WarningTest
 	{
 		public WarningTest()
