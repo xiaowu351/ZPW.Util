@@ -1,4 +1,5 @@
 ﻿using System;
+using ZPW.Util.Domains.Base;
 
 namespace ZPW.Util.Domains.Tests.Samples
 {

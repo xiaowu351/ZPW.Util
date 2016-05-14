@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ZPW.Util.Domains.Base;
 
 namespace ZPW.Util.Domains.Tests.Samples
 {

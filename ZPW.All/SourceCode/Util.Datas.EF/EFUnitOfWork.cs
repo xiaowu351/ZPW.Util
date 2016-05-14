@@ -15,6 +15,10 @@ namespace Util.Datas.EF {
     /// </summary>
     public abstract class EFUnitOfWork : DbContext, IUnitOfWork {
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="connectionName"></param>
         protected EFUnitOfWork(string connectionName) : base(connectionName) {
             TraceId = Guid.NewGuid().ToString();
         }

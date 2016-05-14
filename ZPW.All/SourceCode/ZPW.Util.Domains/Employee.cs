@@ -12,6 +12,10 @@ namespace ZPW.Util.Domains
         /// <summary>
         /// 
         /// </summary>
+        public Employee() : this(Guid.Empty) { }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="id"></param>
         public Employee(Guid id) : base(id)
         {
