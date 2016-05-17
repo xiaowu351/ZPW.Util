@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ZPW.Util.Domains;
+using ZPW.Util.Domains.Repositories;
 
 namespace Util.Datas.EF.Repositories {
 
@@ -14,6 +15,20 @@ namespace Util.Datas.EF.Repositories {
     /// <typeparam name="TEntity">实体类型</typeparam>
     /// <typeparam name="TKey">实体标识类型</typeparam>
     public interface IRepository<TEntity,in TKey> where TEntity:class,IAggregateRoot<TKey> {
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns></returns>
+        IQueryable<TEntity> Query(IQueryBase<TEntity> query);
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        PagerList<TEntity> PagerQuery(IQueryBase<TEntity> query);
 
         /// <summary>
         /// 添加实体

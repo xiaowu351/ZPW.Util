@@ -5,16 +5,102 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Unit.Datas.Queries;
+using Unit.Datas.Queries.Criterias;
+using ZPW.Util.Domains;
 using ZPW.Util.Domains.Repositories;
 using ZPW.Util.Extensions;
 
-namespace Unit.Datas.Extensions
-{
+namespace Unit.Datas.Extensions {
     /// <summary>
     /// 查询扩展
     /// </summary>
-    public static class Extensions
-    {
+    public static class Extensions {
+        /// <summary>
+        /// 过滤整数段
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="propertyExpression">属性表达式，范例： t => t.Age</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        /// <returns></returns>
+        public static IQueryable<T> FilterInt<T, TProperty>(this IQueryable<T> source, Expression<Func<T, TProperty>> propertyExpression, int? min, int? max)
+            where T : class, IAggregateRoot {
+            return source.Filter(new IntSegmentCriteria<T, TProperty>(propertyExpression, min, max));
+        }
+
+        /// <summary>
+        /// 过滤double数值段
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        public static IQueryable<T> FilterDouble<T, TProperty>(this IQueryable<T> source,
+            Expression<Func<T, TProperty>> propertyExpression, double? min, double? max) where T : class, IAggregateRoot {
+            return source.Filter(new DoubleSegmentCriteria<T, TProperty>(propertyExpression, min, max));
+        }
+
+        /// <summary>
+        /// 过滤decimal数值段
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        public static IQueryable<T> FilterDecimal<T, TProperty>(this IQueryable<T> source,
+            Expression<Func<T, TProperty>> propertyExpression, decimal? min, decimal? max) where T : class, IAggregateRoot {
+            return source.Filter(new DecimalSegmentCriteria<T, TProperty>(propertyExpression, min, max));
+        }
+
+        /// <summary>
+        /// 过滤日期段，不包含时间
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        public static IQueryable<T> FilterDate<T, TProperty>(this IQueryable<T> source,
+            Expression<Func<T, TProperty>> propertyExpression, DateTime? min, DateTime? max) where T : class, IAggregateRoot {
+            return source.Filter(new DateSegmentCriteria<T, TProperty>(propertyExpression, min, max));
+        }
+
+        /// <summary>
+        /// 过滤日期时间段，包含时间
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <typeparam name="TProperty">属性类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="propertyExpression">属性表达式，范例：t => t.Age</param>
+        /// <param name="min">最小值</param>
+        /// <param name="max">最大值</param>
+        public static IQueryable<T> FilterDateTime<T, TProperty>(this IQueryable<T> source,
+            Expression<Func<T, TProperty>> propertyExpression, DateTime? min, DateTime? max) where T : class, IAggregateRoot {
+            return source.Filter(new DateTimeSegmentCriteria<T, TProperty>(propertyExpression, min, max));
+        }
+        /// <summary>
+        /// Where条件过滤--扩展
+        /// </summary>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <param name="source">数据源</param>
+        /// <param name="criteria">查询条件</param>
+        /// <returns></returns>
+        public static IQueryable<T> Filter<T>(this IQueryable<T> source, ICriteria<T> criteria) where T : class, IAggregateRoot {
+            if (criteria == null)
+                return source;
+            var predicate = criteria.GetPredicate();
+            if (predicate == null)
+                return source;
+            return source.Where(predicate);
+        }
+
         /// <summary>
         /// Where条件过滤扩展
         /// </summary>
@@ -22,7 +108,7 @@ namespace Unit.Datas.Extensions
         /// <param name="queryable">查询对象</param>
         /// <param name="predicate">谓词</param>
         /// <returns></returns>
-        public static IQueryable<T> Filter<T>(this IQueryable<T> queryable, Expression<Func<T,bool>> predicate) {
+        public static IQueryable<T> Filter<T>(this IQueryable<T> queryable, Expression<Func<T, bool>> predicate) {
 
             QueryHelper.ValidatePredicate(predicate);
             if (predicate == null)
@@ -38,7 +124,7 @@ namespace Unit.Datas.Extensions
         /// <param name="source">数据源</param>
         /// <param name="propertyName">排序属性名，，多个属性用逗号分隔，降序用desc字符串，范例：Name,Age desc</param>
         /// <returns></returns>
-        public static IQueryable<T> OrderBy<T>(this IQueryable<T> source,string propertyName) {
+        public static IQueryable<T> OrderBy<T>(this IQueryable<T> source, string propertyName) {
             //待实现自动解析字符串排序-- 可以直接使用DynamicQueryable源码，这里通过dll引入
             return System.Linq.Dynamic.DynamicQueryable.OrderBy<T>(source, propertyName);
         }
@@ -91,6 +177,6 @@ namespace Unit.Datas.Extensions
             var result = new PagerList<T>(pager);
             result.AddRange(source.ToList());
             return result;
-        }  
+        }
     }
 }

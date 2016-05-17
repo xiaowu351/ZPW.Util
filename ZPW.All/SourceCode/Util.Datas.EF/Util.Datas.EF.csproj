@@ -64,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Unit.Datas\Unit.Datas.csproj">
+      <Project>{79625CE4-6768-4D35-8D07-988B506C25A5}</Project>
+      <Name>Unit.Datas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ZPW.Util.Domains\ZPW.Util.Domains.csproj">
       <Project>{432F89BE-1ACF-4258-96FE-58FADEF2560A}</Project>
       <Name>ZPW.Util.Domains</Name>

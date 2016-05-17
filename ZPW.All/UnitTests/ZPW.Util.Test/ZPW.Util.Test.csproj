@@ -82,6 +82,7 @@
     <Compile Include="Extensions\ExpressionExtensionTest.cs" />
     <Compile Include="Extensions\NullableExtensionTest.cs" />
     <Compile Include="Extensions\ValidateExtensionTest.cs" />
+    <Compile Include="Lambdas\ExpressionBuilderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Samples\LambdaModelTest.cs" />
     <Compile Include="Samples\LambdaTest2.cs" />

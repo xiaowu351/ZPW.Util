@@ -51,8 +51,10 @@
     <Compile Include="Factory\ValidationFactory.cs" />
     <Compile Include="IAggregateRoot.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="Repositories\ICriteria.cs" />
     <Compile Include="Repositories\IPager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IQueryBase.cs" />
     <Compile Include="Repositories\Pager.cs" />
     <Compile Include="Repositories\PagerList.cs" />
     <Compile Include="ValidationHandlers\Impl\ValidationHandler.cs" />

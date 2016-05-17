@@ -4,8 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Unit.Datas.Extensions;
 using Util.Datas.EF.Repositories;
 using ZPW.Util.Domains;
+using ZPW.Util.Domains.Repositories;
 
 namespace Util.Datas.EF {
 
@@ -29,6 +31,37 @@ namespace Util.Datas.EF {
         /// EF工作单元
         /// </summary>
         protected EFUnitOfWork UnitOfWork { get; private set; }
+
+        /// <summary>
+        /// 查询
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public IQueryable<TEntity> Query(IQueryBase<TEntity> query) {
+            return FilterBy(Find(), query);
+        }
+
+        /// <summary>
+        /// 过滤
+        /// </summary>
+        /// <param name="queryable"></param>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        protected IQueryable<TEntity> FilterBy(IQueryable<TEntity> queryable, IQueryBase<TEntity> query) {
+            var predicate = query.GetPredicate();
+            if (predicate == null)
+                return queryable;
+            return queryable.Where(predicate);
+        }
+
+        /// <summary>
+        /// 分页查询
+        /// </summary>
+        /// <param name="query">查询对象</param>
+        /// <returns></returns>
+        public virtual PagerList<TEntity> PagerQuery(IQueryBase<TEntity> query) {
+            return Query(query).PagerResult(query);
+        }
 
         /// <summary>
         /// 添加实体

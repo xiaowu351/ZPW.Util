@@ -89,6 +89,7 @@
     <Compile Include="Extensions\ParameterRebinder.cs" />
     <Compile Include="Extensions\StringHelper.cs" />
     <Compile Include="Extensions\Validate.cs" />
+    <Compile Include="Lambdas\ExpressionBuilder.cs" />
     <Compile Include="Properties\ExceptionResource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
