@@ -87,6 +87,7 @@
     <Compile Include="Samples\LambdaModelTest.cs" />
     <Compile Include="Samples\LambdaTest2.cs" />
     <Compile Include="Samples\LambdaTest1.cs" />
+    <Compile Include="Samples\LogType.cs" />
     <Compile Include="Validations\Samples\Employee.cs" />
     <Compile Include="Validations\ValidationTest.cs" />
   </ItemGroup>

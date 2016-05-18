@@ -198,7 +198,7 @@ namespace ZPW.Util.Configuration
 		/// <returns></returns>
 		private static MetaSourceMappingsConfigurationSection LoadMetaSourceInstanceSectionFromLocal(ConfigFilesSetting settings)
 		{
-			System.Configuration.Configuration config = EnvironmentHelper.Mode == EnumInstanceMode.Web
+			System.Configuration.Configuration config = CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Web
 				? GetStandardWebConfiguration(settings.MetaConfigurationFile)
 				: getStandardExeConfiguration(settings.MachineConfigurationFile, LocalConfigurationFile);
 
@@ -264,7 +264,7 @@ namespace ZPW.Util.Configuration
 		/// <returns>AppSettingsSection对象</returns>
 		private static AppSettingsSection GetLocalAppSettingsSection()
 		{
-			System.Configuration.Configuration config = (EnvironmentHelper.Mode == EnumInstanceMode.Web)
+			System.Configuration.Configuration config = (CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Web)
 				? GetStandardWebConfiguration(MachineConfigurationFile)
 				: getStandardExeConfiguration(MachineConfigurationFile, LocalConfigurationFile);
 
@@ -319,7 +319,7 @@ namespace ZPW.Util.Configuration
 		/// <returns>local和global合并后的Configuration对象</returns>
 		private static System.Configuration.Configuration getFinalConfiguration(ConfigFilesSetting fileSettings)
 		{
-			System.Configuration.Configuration config = EnvironmentHelper.Mode == EnumInstanceMode.Web
+			System.Configuration.Configuration config = CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Web
 				? ConfigurationBroker.GetStandardWebConfiguration(fileSettings.GlobalConfigurationFile)
 				: ConfigurationBroker.getStandardExeConfiguration(fileSettings.GlobalConfigurationFile,
 					fileSettings.LocalConfigurationFile);

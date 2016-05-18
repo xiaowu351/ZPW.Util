@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
+using ZPW.Util.Extensions;
 
-namespace ZPW.Util.Extensions {
+namespace ZPW.Util.Core {
     /// <summary>
     /// Lambda表达式操作
     /// </summary>
-    public class Lambda {
+    public class LambdaHelper {
 
         #region GetName（获取成员名称）
         /// <summary>
@@ -63,22 +63,29 @@ namespace ZPW.Util.Extensions {
         /// </summary>
         /// <param name="expression">表达式，范例：t => t.Name == "A"，返回A</param>
         /// <returns></returns>
-        public static object GetValue(LambdaExpression expression) {
+        public static object GetValue(Expression expression) {
             if (expression == null)
                 return null;
 
-            var memberExpression = expression.Body as MemberExpression;
-            if (memberExpression != null)
-                return GetMemberValue(memberExpression);
-
-            BinaryExpression binaryExpression = GetBinaryExpression(expression);
-
-            if (binaryExpression != null)
-                return GetBinaryValue(binaryExpression);
-
-            var callExpression = expression.Body as MethodCallExpression;
-            if (callExpression != null)
-                return GetMethodValue(callExpression);
+            switch (expression.NodeType) {
+                case ExpressionType.Lambda:
+                    return GetValue(((LambdaExpression)expression).Body);
+                case ExpressionType.Convert:
+                    return GetValue(((UnaryExpression)expression).Operand);
+                case ExpressionType.Equal:
+                case ExpressionType.NotEqual:
+                case ExpressionType.GreaterThan:
+                case ExpressionType.LessThan:
+                case ExpressionType.GreaterThanOrEqual:
+                case ExpressionType.LessThanOrEqual:
+                    return GetValue(((BinaryExpression)expression).Right);
+                case ExpressionType.Call:
+                    return GetValue(((MethodCallExpression)expression).Arguments.FirstOrDefault());
+                case ExpressionType.MemberAccess:
+                    return GetMemberValue((MemberExpression)expression);
+                case ExpressionType.Constant:
+                    return GetConstantExpressionValue(expression);
+            }
             return null;
         }
 
@@ -193,7 +200,7 @@ namespace ZPW.Util.Extensions {
         }
         #endregion
 
-        
+
 
         #region Constant(获取常量)
         /// <summary>
@@ -207,6 +214,16 @@ namespace ZPW.Util.Extensions {
             if (memberExpression == null)
                 return Expression.Constant(value);
             return Expression.Constant(value, memberExpression.Type);
+        }
+
+        /// <summary>
+        /// 获取常量表达式的值
+        /// </summary>
+        /// <param name="expression">表达式</param>
+        /// <returns></returns>
+        public static object GetConstantExpressionValue(Expression expression) {
+            var constantExpression = (ConstantExpression)expression;
+            return constantExpression.Value;
         }
         #endregion
 
@@ -430,7 +447,7 @@ namespace ZPW.Util.Extensions {
         }
 
         #endregion
-
+    */
         #region ParsePredicate(解析为谓词表达式)
 
         /// <summary>
@@ -452,11 +469,11 @@ namespace ZPW.Util.Extensions {
         /// <param name="predicateExpression">谓词表达式字符串,参数占位符为@0,@1,@2 ...</param>
         /// <param name="values">值</param>
         public static Expression<Func<T, bool>> ParsePredicate<T>(string predicateExpression, params object[] values) {
-            return DynamicExpression.ParseLambda(typeof(T), typeof(bool), predicateExpression, values) as Expression<Func<T, bool>>;
+            return System.Linq.Dynamic.DynamicExpression.ParseLambda(typeof(T), typeof(bool), predicateExpression, values) as Expression<Func<T, bool>>;
         }
 
         #endregion
-    */ 
+
         #endregion
     }
 }

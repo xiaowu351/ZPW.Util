@@ -7,13 +7,14 @@ using Microsoft.Win32.SafeHandles;
 
 namespace ZPW.Util.Core
 {
-	
-	public static partial class CoreHelper
-	{
-		/// <summary>
-		/// Windows API 帮助类
-		/// </summary>
-		public static class APIHelper
+    /// <summary>
+    /// 核心帮助类
+    /// </summary>
+    public static partial class CoreHelper {
+        /// <summary>
+        /// Windows API 帮助类
+        /// </summary>
+        public static class APIHelper
 		{
 			/// <summary>
 			/// 生成连续的UUID

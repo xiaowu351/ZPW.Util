@@ -9,7 +9,7 @@ namespace ZPW.Util.Extensions
 	/// <summary>
 	/// 类型转换扩展
 	/// </summary>
-	public static partial class ConvertExtension
+	public static partial class Extension
 	{
 		/// <summary>
 		/// 转换为int
@@ -127,7 +127,7 @@ namespace ZPW.Util.Extensions
 		/// <param name="data">对象</param>
 		public static string ToStr(this object data)
 		{
-			return CoreHelper.ConvertHelper.ToString(data);
+			return Core.CoreHelper.ConvertHelper.ToString(data);
 		}
 	}
 }

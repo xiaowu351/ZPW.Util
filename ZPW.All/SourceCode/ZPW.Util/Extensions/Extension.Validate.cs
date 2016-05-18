@@ -7,7 +7,7 @@ namespace ZPW.Util.Extensions {
     /// <summary>
     /// 验证扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extension {
 
         /// <summary>
         /// 检测null，如果为null则抛出ArgumentNullException异常

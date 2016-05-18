@@ -41,7 +41,7 @@ namespace ZPW.Util.Lambdas {
         /// <param name="value">值</param>
         /// <returns></returns>
         public Expression Create<T>(Expression<Func<TEntity,T>> property,Operator @operator,object value) {
-            return Parameter.Property(Lambda.GetMember(property)).Operation(@operator, value);
+            return Parameter.Property(LambdaHelper.GetMember(property)).Operation(@operator, value);
         }
 
         /// <summary>

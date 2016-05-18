@@ -7,7 +7,7 @@ namespace ZPW.Util.Extensions {
     /// <summary>
     /// 扩展-- 可空类型
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extension {
 
         /// <summary>
         /// 安全返回值

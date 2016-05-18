@@ -73,7 +73,7 @@ namespace ZPW.Util.Configuration.Accessory
 
 			foreach (MetaInstanceConfigurationElement instance in instances)
 			{
-				if (instance == null || instance.Mappings == null || instance.Mappings.Count <= 0 || instance.InstanceMode != EnvironmentHelper.Mode)
+				if (instance == null || instance.Mappings == null || instance.Mappings.Count <= 0 || instance.InstanceMode != CoreHelper.EnvironmentHelper.Mode)
 					continue;
 
 				string metaConfig = ToLowerTrim(instance.Path);
@@ -84,7 +84,7 @@ namespace ZPW.Util.Configuration.Accessory
 					if (isDirectory ^ IsDirectory(applicationPath))
 						continue;
 
-					if (EnvironmentHelper.Mode == EnumInstanceMode.Web)
+					if (CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Web)
 					{
 						//if (pathAbsolute == null)
 						//	pathAbsolute = new Uri(path, UriKind.Absolute);

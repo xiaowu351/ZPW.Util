@@ -6,6 +6,8 @@ using ZPW.Util.Test.Samples;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using ZPW.Util.Logging;
+using ZPW.Util.Core;
 
 namespace ZPW.Util.Test.Extensions {
     /// <summary>
@@ -21,27 +23,27 @@ namespace ZPW.Util.Test.Extensions {
         [TestMethod]
         public void TestGetName() {
             //空值返回空字符串
-            Assert.AreEqual("", Lambda.GetName(null));
+            Assert.AreEqual("", LambdaHelper.GetName(null));
 
             //返回一级属性名
             Expression<Func<LambdaTest1, string>> expression = test => test.Name;
-            Assert.AreEqual("Name", Lambda.GetName(expression));
+            Assert.AreEqual("Name", LambdaHelper.GetName(expression));
 
             //返回二级属性名
             Expression<Func<LambdaTest1, string>> expression2 = test => test.A.Address;
-            Assert.AreEqual("A.Address", Lambda.GetName(expression2));
+            Assert.AreEqual("A.Address", LambdaHelper.GetName(expression2));
 
             //返回三级属性名
             Expression<Func<LambdaTest1, string>> expression3 = test => test.A.B.Name;
-            Assert.AreEqual("A.B.Name", Lambda.GetName(expression3));
+            Assert.AreEqual("A.B.Name", LambdaHelper.GetName(expression3));
 
             //测试可空整型
             Expression<Func<LambdaTest1, int?>> expression4 = test => test.NullableInt;
-            Assert.AreEqual("NullableInt", Lambda.GetName(expression4));
+            Assert.AreEqual("NullableInt", LambdaHelper.GetName(expression4));
 
             //测试类型转换
             Expression<Func<LambdaTest1, int?>> expression5 = test => test.Age;
-            Assert.AreEqual("Age", Lambda.GetName(expression5));
+            Assert.AreEqual("Age", LambdaHelper.GetName(expression5));
         }
 
         #endregion
@@ -54,7 +56,7 @@ namespace ZPW.Util.Test.Extensions {
         [TestMethod]
         public void TestGetValue_Object() {
             Expression<Func<LambdaModelTest, object>> expression = test => test.Name == "A";
-            Assert.AreEqual("A", Lambda.GetValue(expression));
+            Assert.AreEqual("A", LambdaHelper.GetValue(expression));
         }
 
         /// <summary>
@@ -63,19 +65,19 @@ namespace ZPW.Util.Test.Extensions {
         [TestMethod]
         public void TestGetValue_Boolean() {
             //空值返回null
-            Assert.AreEqual(null, Lambda.GetValue(null));
+            Assert.AreEqual(null, LambdaHelper.GetValue(null));
 
             //一级返回值
             Expression<Func<LambdaModelTest, bool>> expression = test => test.Name == "A";
-            Assert.AreEqual("A", Lambda.GetValue(expression));
+            Assert.AreEqual("A", LambdaHelper.GetValue(expression));
 
             //二级返回值
             Expression<Func<LambdaModelTest, bool>> expression2 = test => test.A.Integer == 1;
-            Assert.AreEqual(1, Lambda.GetValue(expression2));
+            Assert.AreEqual(1, LambdaHelper.GetValue(expression2));
 
             //三级返回值
             Expression<Func<LambdaModelTest, bool>> expression3 = test => test.A.B.Name == "B";
-            Assert.AreEqual("B", Lambda.GetValue(expression3));
+            Assert.AreEqual("B", LambdaHelper.GetValue(expression3));
         }
 
         /// <summary>
@@ -85,11 +87,11 @@ namespace ZPW.Util.Test.Extensions {
         public void TestGetValue_Nullable() {
             //可空整型
             Expression<Func<LambdaModelTest, bool>> expression = test => test.NullableInt == 1;
-            Assert.AreEqual(1, Lambda.GetValue(expression));
+            Assert.AreEqual(1, LambdaHelper.GetValue(expression));
 
             //可空decimal
             expression = test => test.NullableDecimal == 1.5M;
-            Assert.AreEqual(1.5M, Lambda.GetValue(expression));
+            Assert.AreEqual(1.5M, LambdaHelper.GetValue(expression));
         }
 
         /// <summary>
@@ -99,15 +101,15 @@ namespace ZPW.Util.Test.Extensions {
         public void TestGetValue_Method() {
             //1级返回值
             Expression<Func<LambdaModelTest, bool>> expression = t => t.Name.Contains("A");
-            Assert.AreEqual("A", Lambda.GetValue(expression));
+            Assert.AreEqual("A", LambdaHelper.GetValue(expression));
 
             //二级返回值
             expression = t => t.A.Address.Contains("B");
-            Assert.AreEqual("B", Lambda.GetValue(expression));
+            Assert.AreEqual("B", LambdaHelper.GetValue(expression));
 
             //三级返回值
             expression = t => t.A.B.Name.StartsWith("C");
-            Assert.AreEqual("C", Lambda.GetValue(expression));
+            Assert.AreEqual("C", LambdaHelper.GetValue(expression));
         }
 
         /// <summary>
@@ -119,15 +121,15 @@ namespace ZPW.Util.Test.Extensions {
 
             //一级属性
             Expression<Func<string>> expression = () => test.Name;
-            Assert.AreEqual("a", Lambda.GetValue(expression));
+            Assert.AreEqual("a", LambdaHelper.GetValue(expression));
 
             //二级属性
             Expression<Func<string>> expression2 = () => test.A.Address;
-            Assert.AreEqual("b", Lambda.GetValue(expression2));
+            Assert.AreEqual("b", LambdaHelper.GetValue(expression2));
 
             //三级属性
             Expression<Func<string>> expression3 = () => test.A.B.Name;
-            Assert.AreEqual("c", Lambda.GetValue(expression3));
+            Assert.AreEqual("c", LambdaHelper.GetValue(expression3));
         }
 
         /// <summary>
@@ -139,15 +141,15 @@ namespace ZPW.Util.Test.Extensions {
 
             //获取表达式的值
             Expression<Func<LambdaTest1, bool>> expression = t => t.Name == test.Name;
-            Assert.AreEqual("a", Lambda.GetValue(expression), "==test.Name");
+            Assert.AreEqual("a", LambdaHelper.GetValue(expression), "==test.Name");
             Expression<Func<LambdaTest1, bool>> expression2 = t => t.Name == test.A.Address;
-            Assert.AreEqual("b", Lambda.GetValue(expression2), "==test.A.Address");
+            Assert.AreEqual("b", LambdaHelper.GetValue(expression2), "==test.A.Address");
 
             //获取方法的值
             Expression<Func<LambdaTest1, bool>> expression3 = t => t.Name.Contains(test.Name);
-            Assert.AreEqual("a", Lambda.GetValue(expression3), "Contains test.Name");
+            Assert.AreEqual("a", LambdaHelper.GetValue(expression3), "Contains test.Name");
             Expression<Func<LambdaTest1, bool>> expression4 = t => t.Name.Contains(test.A.Address);
-            Assert.AreEqual("b", Lambda.GetValue(expression4), "==test.A.Address");
+            Assert.AreEqual("b", LambdaHelper.GetValue(expression4), "==test.A.Address");
         }
         #endregion
 
@@ -159,22 +161,54 @@ namespace ZPW.Util.Test.Extensions {
         [TestMethod]
         public void TestGetParameter() {
             //空值返回null
-            Assert.AreEqual(null, Lambda.GetParameter(null));
+            Assert.AreEqual(null, LambdaHelper.GetParameter(null));
 
             //一级返回值
             Expression<Func<LambdaTest1, object>> expression = test => test.Name == "A";
-            Assert.AreEqual("test", Lambda.GetParameter(expression).ToString());
+            Assert.AreEqual("test", LambdaHelper.GetParameter(expression).ToString());
 
             //二级返回值
             Expression<Func<LambdaTest1, object>> expression2 = test => test.A.Integer == 1;
-            Assert.AreEqual("test", Lambda.GetParameter(expression2).ToString());
+            Assert.AreEqual("test", LambdaHelper.GetParameter(expression2).ToString());
 
             //三级返回值
             Expression<Func<LambdaTest1, object>> expression3 = test => test.A.B.Name == "B";
-            Assert.AreEqual("test", Lambda.GetParameter(expression3).ToString());
+            Assert.AreEqual("test", LambdaHelper.GetParameter(expression3).ToString());
         }
 
         #endregion
+
+        /// <summary>
+        /// 测试值为枚举
+        /// </summary>
+        [TestMethod]
+        public void TestGetValue_Enum() {
+            var lambdaTestEnum = new LambdaTest1();
+
+            lambdaTestEnum.NullableEnumValue = LogType.Error;
+
+            //属性为枚举，值为枚举
+            Expression<Func<LambdaTest1, bool>> expression = test => test.EnumValue == LogType.Debug;
+            Assert.AreEqual(LogType.Debug.Value(), LambdaHelper.GetValue(expression));
+
+            //属性为枚举,值为可空枚举
+            expression = test => test.EnumValue == lambdaTestEnum.NullableEnumValue;
+            Assert.AreEqual(LogType.Error, LambdaHelper.GetValue(expression));
+
+            //属性为可空枚举,值为枚举
+            expression = test => test.NullableEnumValue == LogType.Debug;
+            Assert.AreEqual(LogType.Debug, LambdaHelper.GetValue(expression));
+
+            //属性为可空枚举,值为可空枚举
+            expression = test => test.NullableEnumValue == lambdaTestEnum.NullableEnumValue;
+            Assert.AreEqual(LogType.Error, LambdaHelper.GetValue(expression));
+
+            //属性为可空枚举,值为null
+            lambdaTestEnum.NullableEnumValue = null;
+            expression = test => test.NullableEnumValue == lambdaTestEnum.NullableEnumValue;
+            Assert.AreEqual(null, LambdaHelper.GetValue(expression));
+
+        }
 
         #region .Net Framework 4.6 支持
         /*

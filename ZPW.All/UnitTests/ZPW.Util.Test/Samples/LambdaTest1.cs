@@ -13,6 +13,10 @@ namespace ZPW.Util.Test.Samples {
         public int Age { get; set; }
         public int? NullableInt { get; set; }
         public decimal? NullableDecimal { get; set; }
+
+        public LogType EnumValue { get; set; }
+        public LogType? NullableEnumValue { get; set; }
+
         public TestA A { get; set; }
         public class TestA {
             public int Integer { get; set; }

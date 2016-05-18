@@ -24,7 +24,7 @@ namespace ZPW.Util.Configuration.Accessory
 		{
 			CoreHelper.ExceptionHelper.TrueThrow<NullReferenceException>(instances == null, "配置节点{0}不存在", "sourceMapping/instances");
 
-			base.path = EnvironmentHelper.Mode == EnumInstanceMode.Web
+			base.path = CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Web
 				? HttpContext.Current.Request.Url.AbsoluteUri
 				: AppDomain.CurrentDomain.SetupInformation.ApplicationBase;
 			base.path = ToLowerTrim(base.path);

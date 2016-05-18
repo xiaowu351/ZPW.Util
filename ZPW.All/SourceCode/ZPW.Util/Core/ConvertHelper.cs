@@ -12,7 +12,7 @@ namespace ZPW.Util.Core
 		/// <summary>
 		/// 转换操作类
 		/// </summary>
-		public class ConvertHelper
+		public static class ConvertHelper
 		{
 			#region 数值转换
 

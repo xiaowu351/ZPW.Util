@@ -15,7 +15,7 @@ namespace ZPW.Util.Extensions
 	/// 2. 中国大陆身份证的验证以及15位转18位的实现
 	/// 3. 常用正则表达式验证。如Email、网址、金额
 	/// </remarks>
-	public static class StringHelper
+	public static partial class Extenstion
 	{
 		#region 全角半角转换
 
@@ -185,6 +185,7 @@ namespace ZPW.Util.Extensions
 			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorProvince, "原始身份证{0}编码地区非法", idCard);
 			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorString, "原始身份证{0}编码非法", idCard);
 			CoreHelper.ExceptionHelper.TrueThrow<ArgumentException>(cardResult == EnumIdCardResult.ErrorCard, "原始身份证{0}编码校验码非法", idCard);
+            
 
 			//新身份证号：填在第6位，及第7位上。'1'和'9'两个字符
 			string peridnew = string.Format("{0}19{1}", idCard.Substring(0, 6), idCard.Substring(6, 9));

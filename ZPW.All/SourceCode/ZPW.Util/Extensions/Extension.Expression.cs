@@ -10,7 +10,7 @@ namespace ZPW.Util.Extensions {
     /// <summary>
     /// 表达式扩展
     /// </summary>
-    public static partial class Extensions {
+    public static partial class Extension {
 
         #region Property(属性表达式)
         /// <summary>
@@ -160,7 +160,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression Equal(this Expression left, object value) {
-            return left.Equal(Lambda.Constant(left, value));
+            return left.Equal(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -182,7 +182,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression NotEqual(this Expression left, object value) {
-            return left.NotEqual(Lambda.Constant(left, value));
+            return left.NotEqual(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -204,7 +204,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression Greater(this Expression left, object value) {
-            return left.Greater(Lambda.Constant(left, value));
+            return left.Greater(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -226,7 +226,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression Less(this Expression left, object value) {
-            return left.Less(Lambda.Constant(left, value));
+            return left.Less(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -248,7 +248,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression GreaterEqual(this Expression left, object value) {
-            return left.GreaterEqual(Lambda.Constant(left, value));
+            return left.GreaterEqual(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -270,7 +270,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="left">左操作数</param>
         /// <param name="value">值</param>
         public static Expression LessEqual(this Expression left, object value) {
-            return left.LessEqual(Lambda.Constant(left, value));
+            return left.LessEqual(LambdaHelper.Constant(left, value));
         }
 
         #endregion
@@ -371,7 +371,7 @@ namespace ZPW.Util.Extensions {
         /// <param name="expression">表达式</param>
         /// <returns></returns>
         public static object Value<T>(this Expression<Func<T,bool>> expression) {
-            return Lambda.GetValue(expression);
+            return LambdaHelper.GetValue(expression);
         }
         #endregion
 

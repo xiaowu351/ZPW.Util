@@ -96,7 +96,7 @@ namespace ZPW.Util.Configuration.Element
 			string  path = string.Empty;
 			StrategyContext context = new StrategyContext();
 			//对于Windows应用，如果有匹配的assembly内容，则直接使用文件内容匹配
-			if (EnvironmentHelper.Mode == EnumInstanceMode.Windows)
+			if (CoreHelper.EnvironmentHelper.Mode == EnumInstanceMode.Windows)
 			{
 				context.Strategy = new FileNameMatchStrategy(this);
 				path = context.DoAction();
