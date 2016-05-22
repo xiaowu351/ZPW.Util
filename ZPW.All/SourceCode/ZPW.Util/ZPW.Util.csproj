@@ -78,11 +78,13 @@
     <Compile Include="Configuration\Section\ConfigurationSectionBase.cs" />
     <Compile Include="Configuration\Section\MetaSourceMappingsConfigurationSection.cs" />
     <Compile Include="Core\ConfigHelper.cs" />
+    <Compile Include="Core\Define\ConstDefine.cs" />
     <Compile Include="Core\ConvertHelper.cs" />
     <Compile Include="Core\EnvironmentHelper.cs" />
     <Compile Include="Core\ExceptionHelper.cs" />
     <Compile Include="Core\FileHelper.cs" />
     <Compile Include="Core\ReflectionHelper.cs" />
+    <Compile Include="Core\StringHelper.cs" />
     <Compile Include="Core\UriHelper.cs" />
     <Compile Include="Core\UuidHelper.cs" />
     <Compile Include="Core\Define\EnumDefine.cs" />
@@ -92,6 +94,7 @@
     <Compile Include="Exceptions\ConcurrencyException.cs" />
     <Compile Include="Core\EnumHelper.cs" />
     <Compile Include="Extensions\Extension.Expression.cs" />
+    <Compile Include="Extensions\Extension.IEnumerable.cs" />
     <Compile Include="Extensions\Extension.Nullable.cs" />
     <Compile Include="Core\LambdaHelper.cs" />
     <Compile Include="Core\ParameterRebinder.cs" />

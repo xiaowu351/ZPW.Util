@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ZPW.Util.Core;
 using ZPW.Util.Extensions;
 
 namespace Unit.Datas.Queries {
@@ -21,7 +22,7 @@ namespace Unit.Datas.Queries {
         /// <returns></returns>
         public static Expression<Func<T, bool>> ValidatePredicate<T>(Expression<Func<T, bool>> predicate) {
             predicate.CheckNull("predicate");
-            if (Lambda.GetCriteriaCount(predicate) > 1) {
+            if (LambdaHelper.GetCriteriaCount(predicate) > 1) {
                 throw new InvalidOperationException(string.Format("仅允许添加一个条件，条件：{0}", predicate));
             }
             if (predicate.Value() == null)

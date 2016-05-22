@@ -2,6 +2,11 @@
 using System.Linq;
 
 namespace ZPW.Util.Domains.Base {
+
+    /// <summary>
+    /// 领域对象
+    /// </summary>
+    /// <typeparam name="TValueObject"></typeparam>
     public class ValueObjectBase<TValueObject> : DomainBase, IEquatable<TValueObject>
         where TValueObject : ValueObjectBase<TValueObject>
     {
@@ -43,7 +48,7 @@ namespace ZPW.Util.Domains.Base {
             if (valueObject1.GetType() != valueObject2.GetType())
                 return false;
             var properties = valueObject1.GetType().GetProperties();
-            return properties.All(property => property.GetValue(valueObject1) == property.GetValue(valueObject2));
+            return properties.All(property => property.GetValue(valueObject1,null) == property.GetValue(valueObject2,null));
         }
 
         /// <summary>
@@ -62,7 +67,7 @@ namespace ZPW.Util.Domains.Base {
         public override int GetHashCode()
         {
             var properties = GetType().GetProperties();
-            return properties.Select(property => property.GetValue(this))
+            return properties.Select(property => property.GetValue(this,null))
                       .Where(value => value != null)
                       .Aggregate(0, (current, value) => current ^ value.GetHashCode());
         }

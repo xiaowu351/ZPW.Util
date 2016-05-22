@@ -17,18 +17,32 @@ namespace ZPW.Util.Extensions
 	/// </remarks>
 	public static partial class Extenstion
 	{
-		#region 全角半角转换
+        #region 截断字符串
+        /// <summary>
+        /// 截断字符串
+        /// </summary>
+        /// <param name="text">文本</param>
+        /// <param name="length">返回长度</param>
+        /// <param name="endCharCount">添加结束符号的个数，默认0，不添加</param>
+        /// <param name="endChar">结束符号，默认为省略号</param>
+        public static string Truncate(this string text, int length, int endCharCount = 0, string endChar = ".") {
+            return CoreHelper.StringHelper.Truncate(text, length, endCharCount, endChar);
+        }
 
-		/// <summary>
-		/// 全角转半角的函数（DBC）
-		/// </summary>
-		/// <param name="source">任意字符串</param>
-		/// <returns>半角字符串</returns>
-		/// <remarks>
-		/// 全角空格为12288，半角空格为32
-		/// 其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
-		/// </remarks>
-		public static string ToDBC(this string source)
+        #endregion
+
+        #region 全角半角转换
+
+        /// <summary>
+        /// 全角转半角的函数（DBC）
+        /// </summary>
+        /// <param name="source">任意字符串</param>
+        /// <returns>半角字符串</returns>
+        /// <remarks>
+        /// 全角空格为12288，半角空格为32
+        /// 其他字符半角（33-126）与全角（65281-65374）的对应关系时：均相差65248
+        /// </remarks>
+        public static string ToDBC(this string source)
 		{
 			char[] temp = source.ToCharArray();
 			for (int i = 0; i < temp.Length; i++)
@@ -203,17 +217,7 @@ namespace ZPW.Util.Extensions
 		#endregion
 
 		#region 常用正则表达式实现
-		/// <summary>
-		/// 是否存在正则表达式的匹配成功项目
-		/// </summary>
-		/// <param name="pattern">正则表达式的定义</param>
-		/// <param name="inputStr">待匹配字符串</param>
-		/// <returns>匹配成功返回true，否则返回false</returns>
-		public static bool HasPattern(string pattern, string inputStr)
-		{
-			Regex regex = new Regex(pattern);
-			return regex.IsMatch(inputStr);
-		}
+		
 
 		/// <summary>
 		/// 检查字符串是否合法Email格式
@@ -222,7 +226,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateEmail(this string source)
 		{
-			return HasPattern(RegExpResource.EMail, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.EMail, source);
 		}
 
 		/// <summary>
@@ -232,7 +236,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateInteger(this string source)
 		{
-			return HasPattern(RegExpResource.Integer, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.Integer, source);
 		}
 
 		/// <summary>
@@ -242,7 +246,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateIpAddress(this string source)
 		{
-			return HasPattern(RegExpResource.IpAddress, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.IpAddress, source);
 		}
 
 		/// <summary>
@@ -252,7 +256,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateMoney(this string source)
 		{
-			return HasPattern(RegExpResource.Money, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.Money, source);
 		}
 
 		/// <summary>
@@ -262,7 +266,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateAlpha(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyAlpha, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyAlpha, source);
 		}
 
 		/// <summary>
@@ -272,7 +276,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateAlphaAndNumber(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyAlphaAndNumber, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyAlphaAndNumber, source);
 		}
 
 		/// <summary>
@@ -282,7 +286,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateAlphaLower(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyAlphaLower, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyAlphaLower, source);
 		}
 
 		/// <summary>
@@ -292,7 +296,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateAlphaUpper(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyAlphaUpper, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyAlphaUpper, source);
 		}
 
 		/// <summary>
@@ -302,7 +306,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateUrl(this string source)
 		{
-			return HasPattern(RegExpResource.Url, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.Url, source);
 		}
 		/// <summary>
 		/// 检查字符串是否合法 仅数字格式
@@ -311,7 +315,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateNubmer(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyNumber, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyNumber, source);
 		}
 
 		/// <summary>
@@ -321,7 +325,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateChinese(this string source)
 		{
-			return HasPattern(RegExpResource.OnlyChinese, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.OnlyChinese, source);
 		}
 
 		/// <summary>
@@ -331,7 +335,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateMobilePhone(this string source)
 		{
-			return HasPattern(RegExpResource.MobilePhone, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.MobilePhone, source);
 		}
 
 		/// <summary>
@@ -341,7 +345,7 @@ namespace ZPW.Util.Extensions
 		/// <returns>合法true，非法false</returns>
 		public static bool IsValidateHomePhone(this string source)
 		{
-			return HasPattern(RegExpResource.HomePhone, source);
+			return CoreHelper.StringHelper.HasPattern(RegExpResource.HomePhone, source);
 		}
 		#endregion
 	}

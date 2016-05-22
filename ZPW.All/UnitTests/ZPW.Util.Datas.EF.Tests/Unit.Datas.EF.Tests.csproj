@@ -6,9 +6,9 @@
     <ProjectGuid>{0233DEC9-BAED-4124-8F65-765B23514DDE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Unit.Datas.EF.Tests</RootNamespace>
-    <AssemblyName>Unit.Datas.EF.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ZPW.Util.Datas.EF.Tests</RootNamespace>
+    <AssemblyName>ZPW.Util.Datas.EF.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -61,13 +64,13 @@
     <Compile Include="FilterTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\SourceCode\Unit.Datas\Unit.Datas.csproj">
-      <Project>{79625ce4-6768-4d35-8d07-988b506c25a5}</Project>
-      <Name>Unit.Datas</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SourceCode\Util.Datas.EF\Util.Datas.EF.csproj">
+    <ProjectReference Include="..\..\SourceCode\ZPW.Util.Datas.EF\ZPW.Util.Datas.EF.csproj">
       <Project>{09B0822D-8DA3-4A4C-ABEC-73C31CD2889A}</Project>
-      <Name>Util.Datas.EF</Name>
+      <Name>ZPW.Util.Datas.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SourceCode\ZPW.Util.Datas\ZPW.Util.Datas.csproj">
+      <Project>{79625ce4-6768-4d35-8d07-988b506c25a5}</Project>
+      <Name>ZPW.Util.Datas</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SourceCode\ZPW.Util.Domains\ZPW.Util.Domains.csproj">
       <Project>{432F89BE-1ACF-4258-96FE-58FADEF2560A}</Project>

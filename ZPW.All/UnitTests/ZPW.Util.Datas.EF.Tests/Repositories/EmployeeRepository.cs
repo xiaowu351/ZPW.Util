@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unit.Datas.EF.Tests.Samples;
+﻿using Unit.Datas.EF.Tests.Samples;
 using Util.Datas.EF;
-using ZPW.Util.Domains;
 
 namespace Unit.Datas.EF.Tests.Repositories {
     /// <summary>

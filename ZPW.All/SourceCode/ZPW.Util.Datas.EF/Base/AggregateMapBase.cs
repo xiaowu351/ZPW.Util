@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using ZPW.Util.Domains;
 
 namespace Util.Datas.EF.Base {
@@ -26,7 +21,8 @@ namespace Util.Datas.EF.Base {
         /// 映射属性
         /// </summary>
         protected override void MapProperties() {
-            Property(t => t.Version).HasColumnName("Version").IsRowVersion().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed).IsOptional();
+             
+            Property(t => t.Version).HasColumnName("Version").IsRowVersion().HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed).IsOptional(); 
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Util.Datas.EF;
+﻿using Util.Datas.EF;
 
 namespace Unit.Datas.EF.Tests {
 
